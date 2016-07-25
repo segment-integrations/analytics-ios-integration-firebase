@@ -1,0 +1,22 @@
+PODS:
+  - Expecta (1.0.5)
+  - Segment-Firebase (0.1.0)
+  - Specta (1.0.5)
+
+DEPENDENCIES:
+  - Expecta
+  - Segment-Firebase (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  Segment-Firebase:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  Segment-Firebase: 719a45ed7d37baf487b8d608edf0a0b55e65292a
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
+
+PODFILE CHECKSUM: b01d5498fc66a412413ed5f195c2f2215ac3f71d
+
+COCOAPODS: 1.0.0

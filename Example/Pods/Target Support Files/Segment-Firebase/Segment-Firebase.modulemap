@@ -1,0 +1,6 @@
+framework module Segment_Firebase {
+  umbrella header "Segment-Firebase-umbrella.h"
+
+  export *
+  module * { export * }
+}
