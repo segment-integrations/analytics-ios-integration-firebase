@@ -1,1 +1,1 @@
-../../../Analytics/Pod/Classes/Internal/SEGStoreKitTracker.h
+../../../Analytics/Analytics/Classes/Internal/SEGStoreKitTracker.h

@@ -1,1 +1,1 @@
-../../../Analytics/Pod/Classes/Internal/NSData+GZIP.h
+../../../Analytics/Analytics/Classes/Internal/NSData+GZIP.h

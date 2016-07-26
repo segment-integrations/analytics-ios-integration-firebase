@@ -1,12 +1,8 @@
 PODS:
-  - Analytics (3.2.4)
+  - Analytics (3.2.6)
   - Expecta (1.0.5)
-  - Firebase (3.3.0):
-    - Firebase/Core (= 3.3.0)
   - Firebase/Analytics (3.3.0):
     - FirebaseAnalytics (= 3.2.1)
-  - Firebase/Core (3.3.0):
-    - Firebase/Analytics (= 3.3.0)
   - FirebaseAnalytics (3.2.1):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -20,7 +16,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - Segment-Firebase (0.1.0):
     - Analytics (~> 3.2)
-    - Firebase (~> 3.3.0)
+    - Firebase/Analytics (~> 3.3.0)
   - Specta (1.0.5)
 
 DEPENDENCIES:
@@ -33,7 +29,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Analytics: d801f32615853ca3108216423dbaa829c74f5927
+  Analytics: ad1c5bdc169866d72afdbc918084d0695010e35a
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
@@ -41,9 +37,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  Segment-Firebase: f64198f9ac2ace0cc99d42457fe63ee02bd27c8b
+  Segment-Firebase: 1592920b5c645f1f63e1914ce1743def7b23ce91
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
-PODFILE CHECKSUM: 22b0df0839eb1509dc2619b57d1e4fcd7ec8b529
+PODFILE CHECKSUM: 459094d97d542f94a136ab7cc5aa32ba9ec52c06
 
 COCOAPODS: 1.0.0

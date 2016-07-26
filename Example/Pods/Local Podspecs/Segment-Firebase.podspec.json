@@ -24,7 +24,7 @@
     "Analytics": [
       "~> 3.2"
     ],
-    "Firebase": [
+    "Firebase/Analytics": [
       "~> 3.3.0"
     ]
   }

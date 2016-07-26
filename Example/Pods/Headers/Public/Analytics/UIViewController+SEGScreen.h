@@ -1,1 +1,1 @@
-../../../Analytics/Pod/Classes/Internal/UIViewController+SEGScreen.h
+../../../Analytics/Analytics/Classes/Internal/UIViewController+SEGScreen.h
