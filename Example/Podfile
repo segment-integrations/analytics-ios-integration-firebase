@@ -1,5 +1,3 @@
-use_frameworks!
-
 target 'Segment-Firebase_Example' do
   pod 'Segment-Firebase', :path => '../'
 
@@ -7,6 +5,6 @@ target 'Segment-Firebase_Example' do
     inherit! :search_paths
 
     pod 'Specta'
-  pod 'Expecta'
+    pod 'Expecta'
   end
 end

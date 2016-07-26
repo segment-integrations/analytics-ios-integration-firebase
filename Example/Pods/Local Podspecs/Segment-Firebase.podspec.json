@@ -1,22 +1,31 @@
 {
   "name": "Segment-Firebase",
   "version": "0.1.0",
-  "summary": "A short description of Segment-Firebase.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/Segment-Firebase",
+  "summary": "Firebase Integration for Segment's analytics-ios library.",
+  "description": "Analytics for iOS provides a single API that lets you\nintegrate with over 100s of tools.\n\nThis is the Firebase integration for the iOS library.",
+  "homepage": "http://segment.com/",
   "license": {
-    "type": "MIT",
-    "file": "LICENSE"
+    "type": "MIT"
   },
   "authors": {
-    "wcjohnson11": "williamcouperjohnson@gmail.com"
+    "Segment": "friends@segment.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/Segment-Firebase.git",
+    "git": "https://github.com/segment-integrations/analytics-ios-integration-firebase.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/segment",
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "Segment-Firebase/Classes/**/*"
+  "requires_arc": true,
+  "source_files": "Segment-Firebase/Classes/**/*",
+  "dependencies": {
+    "Analytics": [
+      "~> 3.2"
+    ],
+    "Firebase": [
+      "~> 3.3.0"
+    ]
+  }
 }
