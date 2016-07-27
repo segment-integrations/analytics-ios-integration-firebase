@@ -530,6 +530,11 @@
 				GCC_PREFIX_HEADER = "Segment-Firebase/Segment-Firebase-Prefix.pch";
 				INFOPLIST_FILE = "Segment-Firebase/Segment-Firebase-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Analytics\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Segment-Firebase\"",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
