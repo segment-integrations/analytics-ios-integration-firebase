@@ -22,12 +22,12 @@ describe(@"these will fail", ^{
     
     it(@"will wait for 10 seconds and fail", ^{
         waitUntil(^(DoneCallback done) {
-        
+
         });
     });
 });
 
-describe(@"these will pass", ^{
+describe(@"these will pass", ^{ 
     
     it(@"can do maths", ^{
         expect(1).beLessThan(23);
