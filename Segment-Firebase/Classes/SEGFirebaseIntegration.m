@@ -6,9 +6,13 @@
 
 @implementation SEGFirebaseIntegration
 
+#pragma mark - Initialization
+
 - (id)initWithSettings:(NSDictionary *)settings
 {
     if (self = [super init]) {
+        self.settings = settings;
+        
         [FIRApp configure];
         SEGLog(@"[FIRApp Configure]");
     }
@@ -30,10 +34,11 @@
     
      NSString *name = [self firebaseEventNames:payload.event];
      NSDictionary *parameters = [self firebaseParameters:payload.properties];
-     
+
      [FIRAnalytics logEventWithName:name parameters:parameters];
      SEGLog(@"[FIRAnalytics logEventWithName:%@ parameters:%@]", name, parameters);
  }
+
 
 # pragma mark - Utilities
 //Event names can be up to 32 characters long, may only contain alphanumeric
@@ -44,27 +49,27 @@
 {
     // Map the event names to special firebase events
     NSDictionary *mapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"add_payment_info", @"paymentInfoEntered",
-                            @"add_to_cart", @"productAdded",
-                            @"add_to_wishlist", @"productAddedToWishlist",
-                            @"app_open", @"applicationOpened",
-                            @"begin_checkout", @"checkout_started",
-                            @"present_offer", @"promotionViewed",
-                            @"search", @"productsSearched",
-                            @"select_content", @"productClicked",
-                            @"view_item", @"productViewed",
-                            @"view_item_list", @"productListViewed",
-                            @"share", @"productShared",
-                            @"ecommerce_purchase", @"orderCompleted",
-                            @"purchase_refund", @"orderRefunded"
+                            @"add_payment_info", @"payment info entered",
+                            @"add_to_cart", @"product added",
+                            @"add_to_wishlist", @"product added to wishlist",
+                            @"app_open", @"application opened",
+                            @"begin_checkout", @"checkout started",
+                            @"present_offer", @"promotion viewed",
+                            @"search", @"products searched",
+                            @"select_content", @"product clicked",
+                            @"view_item", @"product viewed",
+                            @"view_item_list", @"product list viewed",
+                            @"share", @"product shared",
+                            @"ecommerce_purchase", @"order completed",
+                            @"purchase_refund", @"order refunded", nil
                             ];
     
-    NSString *mappedEvent = [mapper objectForKey:event];
+    NSString *mappedEvent = [mapper objectForKey:[event lowercaseString]];
     
     if (mappedEvent) {
         return mappedEvent;
     } else {
-        return event;
+        return [event stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     }
 }
 
@@ -79,8 +84,6 @@
     // Map to special firebase properties.
     NSDictionary *mapper = [NSDictionary dictionaryWithObjectsAndKeys:
                          @"content_type", @"category",
-                         @"coupon", @"coupon",
-                         @"currency", @"currency",
                          // flatten location
                          @"destination", @"location",
                          @"start_date", @"checkin_date",
@@ -97,9 +100,9 @@
                          @"shipping", @"shipping",
                          @"tax", @"tax",
                          @"travel_class", @"class",
-                         @"value", @"value",
-                         @"transaction_id", @"order_id",
-                         @"$phone", @"phone", nil];
+                         @"value", @"total",
+                         @"value", @"revenue",
+                         @"transaction_id", @"order_id", nil];
     
     return [SEGFirebaseIntegration map:properties withMap:mapper];
 }
@@ -111,6 +114,22 @@
     [map enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
         id data = [mapped objectForKey:original];
         if (data) {
+            // Check if the property could be a number, convert if so
+            if ([data isKindOfClass:[NSString class]]) {
+                NSNumber *number;
+                BOOL validNumber;
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                number = [formatter numberFromString:data];
+                validNumber = number != nil;
+                
+                if (validNumber) {
+                    data = number;
+                } else {
+                    data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+                }
+            }
+            
             [mapped setObject:data forKey:new];
             [mapped removeObjectForKey:original];
         }

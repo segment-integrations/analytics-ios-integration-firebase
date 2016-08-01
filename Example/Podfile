@@ -5,6 +5,7 @@ target 'Segment-Firebase_Example' do
   target 'Segment-Firebase_Tests' do
     inherit! :search_paths
 
+    pod 'OCMockito'
     pod 'Specta'
     pod 'Expecta'
   end
