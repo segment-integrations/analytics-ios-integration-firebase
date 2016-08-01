@@ -40,6 +40,14 @@
           "~> 3.3.0"
         ]
       }
+    },
+    {
+      "name": "AppIndexing",
+      "dependencies": {
+        "Firebase/AppIndexing": [
+          "~> 3.3.0"
+        ]
+      }
     }
   ]
 }

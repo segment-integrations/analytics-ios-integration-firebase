@@ -49,7 +49,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   OCHamcrest: 5c1d441c5a82fb18ac17c2aeb52ec1a99edb971b
   OCMockito: 2cb6c2267cbc76537be56281cd47cdb5a7c27541
-  Segment-Firebase: ef20af36e61bec04532f47529715d070938104fd
+  Segment-Firebase: df8740d217049a0fcc66166b506e397fb13b3a8e
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
 PODFILE CHECKSUM: d9c3dca65a70c20f72019015609af9a27fdc5fcb
