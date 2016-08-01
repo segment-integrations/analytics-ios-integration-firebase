@@ -1,0 +1,57 @@
+PODS:
+  - Analytics (3.2.6)
+  - Expecta (1.0.5)
+  - Firebase/Analytics (3.3.0):
+    - FirebaseAnalytics (= 3.2.1)
+  - Firebase/Core (3.3.0):
+    - Firebase/Analytics (= 3.3.0)
+  - FirebaseAnalytics (3.2.1):
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleUtilities (~> 1.3)
+  - FirebaseInstanceID (1.0.8)
+  - GoogleInterchangeUtilities (1.2.1):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.1.1)
+  - GoogleUtilities (1.3.1):
+    - GoogleSymbolUtilities (~> 1.0)
+  - OCHamcrest (5.4.0)
+  - OCMockito (3.0.2):
+    - OCHamcrest (~> 5.1)
+  - Segment-Firebase (0.1.0):
+    - Analytics (~> 3.2)
+    - Firebase/Core (~> 3.3.0)
+    - Segment-Firebase/Core (= 0.1.0)
+  - Segment-Firebase/Core (0.1.0):
+    - Analytics (~> 3.2)
+    - Firebase/Core (~> 3.3.0)
+  - Specta (1.0.5)
+
+DEPENDENCIES:
+  - Expecta
+  - OCMockito
+  - Segment-Firebase (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  Segment-Firebase:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Analytics: ad1c5bdc169866d72afdbc918084d0695010e35a
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
+  FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
+  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
+  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
+  OCHamcrest: 5c1d441c5a82fb18ac17c2aeb52ec1a99edb971b
+  OCMockito: 2cb6c2267cbc76537be56281cd47cdb5a7c27541
+  Segment-Firebase: ef20af36e61bec04532f47529715d070938104fd
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
+
+PODFILE CHECKSUM: d9c3dca65a70c20f72019015609af9a27fdc5fcb
+
+COCOAPODS: 1.0.1

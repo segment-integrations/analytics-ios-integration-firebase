@@ -1,42 +1,36 @@
-#
-# Be sure to run `pod lib lint Segment-Firebase.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'Segment-Firebase'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of Segment-Firebase.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.name             = "Segment-Firebase"
+  s.version          = "0.1.0"
+  s.summary          = "Firebase Integration for Segment's analytics-ios library."
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                       Analytics for iOS provides a single API that lets you
+                       integrate with over 100s of tools.
+
+                       This is the Firebase integration for the iOS library.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Segment-Firebase'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wcjohnson11' => 'williamcouperjohnson@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Segment-Firebase.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.homepage         = "http://segment.com/"
+  s.license          =  { :type => 'MIT' }
+  s.author           = { "Segment" => "friends@segment.com" }
+  s.source           = { :git => "https://github.com/segment-integrations/analytics-ios-integration-firebase.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/segment'
 
-  s.ios.deployment_target = '8.0'
+  s.platform     = :ios, '8.0'
+  s.requires_arc = true
 
   s.source_files = 'Segment-Firebase/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'Segment-Firebase' => ['Segment-Firebase/Assets/*.png']
-  # }
+  s.default_subspec = 'Core'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Analytics', '~> 3.2'
+  s.dependency 'Firebase/Core', '~> 3.3.0'
+
+  s.subspec 'Core' do |core|
+    #For users who only want the core Firebase package
+  end
+
+  s.subspec 'DynamicLinks' do |dynamiclinks|
+    # This will bundle in Firebase Dynamic Link support
+    dynamiclinks.dependency 'Firebase/DynamicLinks', '~> 3.3.0'
+  end
 end

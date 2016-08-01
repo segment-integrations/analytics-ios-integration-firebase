@@ -2,7 +2,12 @@
 
 #ifdef __OBJC__
 
-  @import Specta;
-  @import Expecta;
+  #import <Specta/Specta.h>
+  #import <Expecta/Expecta.h>
+  #import <OCMockito/OCMockito.h>
+  #import <Analytics/SEGAnalytics.h>
+  #import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
+  #import <Segment-Firebase/SEGFirebaseIntegration.h>
+  #import <Firebase/Firebase.h>
 
 #endif

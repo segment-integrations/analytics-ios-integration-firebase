@@ -7,12 +7,18 @@
 //
 
 #import "SEGViewController.h"
+#import <Analytics/SEGAnalytics.h>
 
 @interface SEGViewController ()
 
 @end
 
 @implementation SEGViewController
+- (IBAction)buttonTouch:(id)sender {
+    [[SEGAnalytics sharedAnalytics] track:@"order Completed" properties:@{
+                                                                         @"currency": @"USD",
+                                                                         @"total": @"10.20"}];
+}
 
 - (void)viewDidLoad
 {

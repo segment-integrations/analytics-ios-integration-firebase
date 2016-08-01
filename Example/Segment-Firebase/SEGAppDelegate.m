@@ -7,11 +7,22 @@
 //
 
 #import "SEGAppDelegate.h"
+#import <Analytics/SEGAnalytics.h>
+#import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
+#import <Firebase/Firebase.h>
 
 @implementation SEGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"WRITE_KEY_HERE"];
+    
+    configuration.trackApplicationLifecycleEvents = YES; // Enable this to record certain application events automatically!
+    configuration.recordScreenViews = YES; // Enable this to record screen views automatically!
+    configuration.flushAt = 1; // Flush events to Segment every 1 event
+    [configuration use:[SEGFirebaseIntegrationFactory instance]]; // Use Firebase
+    [SEGAnalytics setupWithConfiguration:configuration];
+    [SEGAnalytics debug:YES];
     // Override point for customization after application launch.
     return YES;
 }
