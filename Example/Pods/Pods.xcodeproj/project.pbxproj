@@ -734,7 +734,6 @@
 		675CDA92DD97890A15BEE6232CCC7704 /* MKTExecutesBlock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTExecutesBlock.h; path = Source/OCMockito/Stubbing/MKTExecutesBlock.h; sourceTree = "<group>"; };
 		678EB29EEB10E6175318878E8EF7D6F0 /* SEGStoreKitTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SEGStoreKitTracker.h; path = Analytics/Classes/Internal/SEGStoreKitTracker.h; sourceTree = "<group>"; };
 		678EE71FE93FBF208ED6A5203A664EE8 /* OCMockito.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMockito.m; path = Source/OCMockito/Core/OCMockito.m; sourceTree = "<group>"; };
-		67BF6F0F70845246695507F3B56AAEBE /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
 		67EF2B2AD92DB5003E70256F0A2A64C6 /* SPTCompiledExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTCompiledExample.h; path = Specta/Specta/SPTCompiledExample.h; sourceTree = "<group>"; };
 		6826FC6D02598DBFA50872402AB644AA /* MKTBoolArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTBoolArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTBoolArgumentGetter.h; sourceTree = "<group>"; };
 		69B2DB3F26D031C525A53840FA5C31ED /* MKTArgumentGetterChain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTArgumentGetterChain.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTArgumentGetterChain.m; sourceTree = "<group>"; };
@@ -769,7 +768,6 @@
 		77B034DD264F5835573670D9E03F8EE1 /* SPTSharedExampleGroups.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTSharedExampleGroups.m; path = Specta/Specta/SPTSharedExampleGroups.m; sourceTree = "<group>"; };
 		7841275E5BDC3FE977A1C7472279C572 /* HCIntReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIntReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCIntReturnGetter.h; sourceTree = "<group>"; };
 		7963CAC2CCEF6CCCE3E836723DB92648 /* HCSubstringMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCSubstringMatcher.h; path = Source/Library/Text/HCSubstringMatcher.h; sourceTree = "<group>"; };
-		79A5C8861D701AB53AD33E9D1D567FFF /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		7A958F85592E4968F1CF9C04E4DE22D9 /* HCOrderingComparison.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCOrderingComparison.h; path = Source/Library/Number/HCOrderingComparison.h; sourceTree = "<group>"; };
 		7ABFDD63590DBF2CB8EF0028E245E5B0 /* HCIsTypeOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsTypeOf.m; path = Source/Library/Object/HCIsTypeOf.m; sourceTree = "<group>"; };
 		7B5A2EE47D4E2911FDC95EBA8E3E1969 /* HCBoolReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCBoolReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCBoolReturnGetter.h; sourceTree = "<group>"; };
@@ -901,6 +899,7 @@
 		BE854366EE929ACBF5BD749CFA972CF2 /* HCIsEmptyCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsEmptyCollection.m; path = Source/Library/Collection/HCIsEmptyCollection.m; sourceTree = "<group>"; };
 		BEE272D6F96DEA4475106C74535AF858 /* HCIsTypeOf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsTypeOf.h; path = Source/Library/Object/HCIsTypeOf.h; sourceTree = "<group>"; };
 		BF6C3CA1A715AE408D8B358FDD910E97 /* HCHasProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCHasProperty.h; path = Source/Library/Object/HCHasProperty.h; sourceTree = "<group>"; };
+		BFA79B6D1DE1BB36D24E53B6341C4940 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		BFB2C492EB4AA797E658C1EDD4BE7789 /* MKTInvocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTInvocation.h; path = Source/OCMockito/Invocation/MKTInvocation.h; sourceTree = "<group>"; };
 		C1C0FF93B6874BDE6BBA6ACF44714F72 /* EXPMatchers+beGreaterThan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beGreaterThan.h"; path = "Expecta/Matchers/EXPMatchers+beGreaterThan.h"; sourceTree = "<group>"; };
 		C23F26943AB75166ED20D22AD7A67C33 /* HCAssertThat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCAssertThat.m; path = Source/Core/HCAssertThat.m; sourceTree = "<group>"; };
@@ -964,6 +963,7 @@
 		E4A8A26BF0740FB8701727E058CE87E7 /* EXPMatchers+beInTheRangeOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beInTheRangeOf.m"; path = "Expecta/Matchers/EXPMatchers+beInTheRangeOf.m"; sourceTree = "<group>"; };
 		E4EA5A34D2CC1060F37F31C1EEA3232B /* HCStringContains.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCStringContains.m; path = Source/Library/Text/HCStringContains.m; sourceTree = "<group>"; };
 		E66832888ABAFE8AB02AAB10E92F64E0 /* Pods-Segment-Firebase_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Segment-Firebase_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		E79E53FB90EB1C445006D8E9DB7E3D06 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		E7D77EEAC66DCECB75173A0620823487 /* Pods-Segment-Firebase_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Segment-Firebase_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E7EF3573076B2E79B4F77EA787521CE9 /* HCReturnTypeHandlerChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCReturnTypeHandlerChain.h; path = Source/Core/Helpers/ReturnValueGetters/HCReturnTypeHandlerChain.h; sourceTree = "<group>"; };
 		E88B9A02D2AF5CE32DFCA3B44C7C4F31 /* HCIsEqual.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsEqual.h; path = Source/Library/Object/HCIsEqual.h; sourceTree = "<group>"; };
@@ -1710,12 +1710,13 @@
 			path = OCMockito;
 			sourceTree = "<group>";
 		};
-		9269D1772DC97057C4E3268BAF6317E3 /* Frameworks */ = {
+		8BD4A3BF570C750BDE1123C0E63AA94C /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				79A5C8861D701AB53AD33E9D1D567FFF /* FirebaseInstanceID.framework */,
+				E79E53FB90EB1C445006D8E9DB7E3D06 /* FIRInstanceID.h */,
+				D2398457C8EECDFC4CDFFEF2474770E7 /* Frameworks */,
 			);
-			name = Frameworks;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		9347B507E739D3D16E8890709F91EDF4 /* Analytics */ = {
@@ -1733,7 +1734,7 @@
 				2FFDF836CEC456D4823EF9769A2EC7AD /* Expecta */,
 				26F0D29610979C54EF2F08A9B012D015 /* Firebase */,
 				BBA4CCEB48048820F23B09E5EBF4C4AD /* FirebaseAnalytics */,
-				F4EC5353FEE83A2DE6088D22696450F2 /* FirebaseInstanceID */,
+				8BD4A3BF570C750BDE1123C0E63AA94C /* FirebaseInstanceID */,
 				B9336157C36212E43CE230358262E1CB /* GoogleInterchangeUtilities */,
 				CD5FF53CADB0984632EAAB4F9E1035BB /* GoogleSymbolUtilities */,
 				5ED479B3698C8EC366715FCB49A1A1B1 /* GoogleUtilities */,
@@ -1813,6 +1814,14 @@
 			path = "Segment-Firebase";
 			sourceTree = "<group>";
 		};
+		D2398457C8EECDFC4CDFFEF2474770E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFA79B6D1DE1BB36D24E53B6341C4940 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D24B2EA016AE4FABDB5AF17F3FD9C222 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1835,15 +1844,6 @@
 				63159E0DD44DD7E001695B784995B5C7 /* libSpecta.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F4EC5353FEE83A2DE6088D22696450F2 /* FirebaseInstanceID */ = {
-			isa = PBXGroup;
-			children = (
-				67BF6F0F70845246695507F3B56AAEBE /* FIRInstanceID.h */,
-				9269D1772DC97057C4E3268BAF6317E3 /* Frameworks */,
-			);
-			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		F88C4D4B14F4D6802B5C6ADFAFE1258C /* Development Pods */ = {

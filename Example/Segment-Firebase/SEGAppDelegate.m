@@ -9,6 +9,7 @@
 #import "SEGAppDelegate.h"
 #import <Analytics/SEGAnalytics.h>
 #import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
+#import <Firebase/Firebase.h>
 
 @implementation SEGAppDelegate
 

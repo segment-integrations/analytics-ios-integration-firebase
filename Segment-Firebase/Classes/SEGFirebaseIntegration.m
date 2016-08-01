@@ -12,6 +12,11 @@
 {
     if (self = [super init]) {
         self.settings = settings;
+        NSString *deepLinkURLScheme = [self.settings objectForKey:@"deepLinkURLScheme"];
+        if (deepLinkURLScheme) {
+            [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
+            SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
+        }
         
         [FIRApp configure];
         SEGLog(@"[FIRApp Configure]");
@@ -21,6 +26,11 @@
 
 - (void)identify:(SEGIdentifyPayload *)payload
 {
+    if (payload.userId) {
+        [FIRAnalytics setUserID:payload.userId];
+        SEGLog(@"[FIRAnalytics setUserId:%@]", payload.userId);
+    }
+    
     [payload.traits enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
         NSString *trait = key;
         NSString *value = obj;

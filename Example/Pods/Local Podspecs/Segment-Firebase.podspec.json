@@ -20,12 +20,26 @@
   },
   "requires_arc": true,
   "source_files": "Segment-Firebase/Classes/**/*",
+  "default_subspecs": "Core",
   "dependencies": {
     "Analytics": [
       "~> 3.2"
     ],
-    "Firebase/Analytics": [
+    "Firebase/Core": [
       "~> 3.3.0"
     ]
-  }
+  },
+  "subspecs": [
+    {
+      "name": "Core"
+    },
+    {
+      "name": "DynamicLinks",
+      "dependencies": {
+        "Firebase/DynamicLinks": [
+          "~> 3.3.0"
+        ]
+      }
+    }
+  ]
 }
