@@ -1,7 +1,7 @@
 
 target 'Segment-Firebase_Example' do
   pod 'Segment-Firebase', :path => '../'
-
+  
   target 'Segment-Firebase_Tests' do
     inherit! :search_paths
 
