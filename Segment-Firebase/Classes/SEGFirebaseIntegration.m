@@ -32,8 +32,8 @@
     }
     
     [payload.traits enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
-        NSString *trait = key;
-        NSString *value = obj;
+        NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *value = [obj stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         [FIRAnalytics setUserPropertyString:value forName:trait];
         SEGLog(@"[FIRAnalytics setUserPropertyString:%@ forName:%@]", value, trait);
     }];

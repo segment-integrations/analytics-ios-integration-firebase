@@ -23,7 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    	// Do any additional setup after loading the view, typically from a nib.
+    [[SEGAnalytics sharedAnalytics] identify:@"123abc" traits:@{@"name":@"fred", @"gender":@"male"}];
 }
 
 - (void)didReceiveMemoryWarning
