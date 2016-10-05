@@ -22,8 +22,8 @@ Pod::Spec.new do |s|
   s.source_files = 'Segment-Firebase/Classes/**/*'
   s.default_subspec = 'Core'
 
-  s.dependency 'Analytics', '~> 3.2'
-  s.dependency 'Firebase/Core', '~> 3.3.0'
+  s.dependency 'Analytics', '~> 3.0'
+  s.dependency 'Firebase/Core', '~> 3.7'
 
   s.subspec 'Core' do |core|
     #For users who only want the core Firebase package
@@ -31,11 +31,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'DynamicLinks' do |dynamiclinks|
     # This will bundle in Firebase Dynamic Link support
-    dynamiclinks.dependency 'Firebase/DynamicLinks', '~> 3.3.0'
+    dynamiclinks.dependency 'Firebase/DynamicLinks', '~> 3.0'
   end
 
   s.subspec 'AppIndexing' do |appindexing|
     # This will bundle in Firebase App Indexing support
-    appindexing.dependency 'Firebase/AppIndexing', '~> 3.3.0'
+    appindexing.dependency 'Firebase/AppIndexing', '~> 3.0'
   end
 end

@@ -163,7 +163,7 @@ FOUNDATION_EXPORT MKTOngoingStubbing *MKTGivenVoidWithLocation(id testCase, cons
  * matcher is implicitly wrapped in <code>equalTo</code> to match for equality.
  *
  * Example:
- * <pre>[givenVoid([mockObject methodReturningVoid]) willDo:^{ magic(); }];</pre>
+ * <pre>[givenVoid([mockObject methodReturningVoid]) willDo:^id(NSInvocation *invocation) { magic(); return nil; }];</pre>
  *
  * <b>Name Clash</b><br />
  * In the event of a name clash, <code>#define MKT_DISABLE_SHORT_SYNTAX</code> and use the synonym
@@ -173,11 +173,11 @@ FOUNDATION_EXPORT MKTOngoingStubbing *MKTGivenVoidWithLocation(id testCase, cons
 #endif
 
 
-#define MKTStubProperty(mock, property, stubbedValue)                          \
-    do {                                                                       \
-        [MKTGiven([mock property]) willReturn:stubbedValue];                   \
-        [MKTGiven([mock valueForKey:@#property]) willReturn:stubbedValue];     \
-        [MKTGiven([mock valueForKeyPath:@#property]) willReturn:stubbedValue]; \
+#define MKTStubProperty(mock, propertyName, stubbedValue)                          \
+    do {                                                                           \
+        [MKTGiven([mock propertyName]) willReturn:stubbedValue];                   \
+        [MKTGiven([mock valueForKey:@#propertyName]) willReturn:stubbedValue];     \
+        [MKTGiven([mock valueForKeyPath:@#propertyName]) willReturn:stubbedValue]; \
     } while(0)
 
 #ifndef MKT_DISABLE_SHORT_SYNTAX
@@ -188,7 +188,22 @@ FOUNDATION_EXPORT MKTOngoingStubbing *MKTGivenVoidWithLocation(id testCase, cons
  * In the event of a name clash, <code>#define MKT_DISABLE_SHORT_SYNTAX</code> and use the synonym
  * MKTStubProperty instead.
  */
-#define stubProperty(mock, property, stubbedValue) MKTStubProperty(mock, property, stubbedValue)
+#define stubProperty(mock, propertyName, stubbedValue) MKTStubProperty(mock, propertyName, stubbedValue)
+#endif
+
+
+FOUNDATION_EXPORT void MKTStubSingletonWithLocation(id mockClass, SEL aSelector, id testCase, const char *fileName, int lineNumber);
+#define MKTStubSingleton(mockClass, methodName) MKTStubSingletonWithLocation(mockClass, @selector(methodName), self, __FILE__, __LINE__)
+
+#ifndef MKT_DISABLE_SHORT_SYNTAX
+/*!
+ * @abstract Stubs a singleton to the mock class object.
+ * @discussion
+ * <b>Name Clash</b><br />
+ * In the event of a name clash, <code>#define MKT_DISABLE_SHORT_SYNTAX</code> and use the synonym
+ * MKTStubSingleton instead.
+ */
+#define stubSingleton(mockClass, methodName) MKTStubSingleton(mockClass, methodName)
 #endif
 
 

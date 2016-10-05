@@ -23,10 +23,10 @@
   "default_subspecs": "Core",
   "dependencies": {
     "Analytics": [
-      "~> 3.2"
+      "~> 3.0"
     ],
     "Firebase/Core": [
-      "~> 3.3.0"
+      "~> 3.7"
     ]
   },
   "subspecs": [
@@ -37,7 +37,7 @@
       "name": "DynamicLinks",
       "dependencies": {
         "Firebase/DynamicLinks": [
-          "~> 3.3.0"
+          "~> 3.0"
         ]
       }
     },
@@ -45,7 +45,7 @@
       "name": "AppIndexing",
       "dependencies": {
         "Firebase/AppIndexing": [
-          "~> 3.3.0"
+          "~> 3.0"
         ]
       }
     }
