@@ -5,21 +5,9 @@
 
 #import "MKTAtLeastTimes.h"
 #import "MKTAtMostTimes.h"
-#import "MKTClassObjectMock.h"
 #import "MKTExactTimes.h"
 #import "MKTMockitoCore.h"
-#import "MKTObjectAndProtocolMock.h"
-#import "MKTObjectMock.h"
 
-
-static BOOL isValidMockClass(id mock)
-{
-    NSString *className = NSStringFromClass([mock class]);
-    return [className isEqualToString:@"MKTObjectMock"] ||
-            [className isEqualToString:@"MKTProtocolMock"] ||
-            [className isEqualToString:@"MKTClassObjectMock"] ||
-            [className isEqualToString:@"MKTObjectAndProtocolMock"];
-}
 
 static NSString *actualTypeName(id mock)
 {
@@ -31,10 +19,34 @@ static NSString *actualTypeName(id mock)
 
 static BOOL reportedInvalidMock(id mock, id testCase, const char *fileName, int lineNumber, NSString *functionName)
 {
-    if (isValidMockClass(mock))
+    if ([MKTBaseMockObject isMockObject:mock])
         return NO;
-    NSString *description = [NSString stringWithFormat:@"Argument passed to %@ should be a mock but is %@",
-                                                       functionName, actualTypeName(mock)];
+    NSString *description = [NSString stringWithFormat:
+            @"Argument passed to %@ should be a mock, but was %@",
+            functionName, actualTypeName(mock)];
+    MKTFailTest(testCase, fileName, lineNumber, description);
+    return YES;
+}
+
+static BOOL reportedInvalidClassMock(id classMock, id testCase, const char *fileName, int lineNumber, NSString *functionName)
+{
+    NSString *className = NSStringFromClass([classMock class]);
+    if ([className isEqualToString:@"MKTClassObjectMock"])
+        return NO;
+    NSString *description = [NSString stringWithFormat:
+            @"Argument passed to %@ should be a class mock, but was %@",
+            functionName, actualTypeName(classMock)];
+    MKTFailTest(testCase, fileName, lineNumber, description);
+    return YES;
+}
+
+static BOOL reportedInvalidClassMethod(MKTClassObjectMock *theMock, SEL aSelector, id testCase, const char *fileName, int lineNumber, NSString *functionName)
+{
+    if ([theMock respondsToSelector:aSelector])
+        return NO;
+    NSString *description = [NSString stringWithFormat:
+            @"Method name passed to %@ should be a class method of %@, but was %@",
+            functionName, theMock.mockedClass, NSStringFromSelector(aSelector)];
     MKTFailTest(testCase, fileName, lineNumber, description);
     return YES;
 }
@@ -75,11 +87,21 @@ MKTOngoingStubbing *MKTGivenVoidWithLocation(id testCase, const char *fileName, 
     return [[MKTMockitoCore sharedCore] stubAtLocation:MKTTestLocationMake(testCase, fileName, lineNumber)];
 }
 
+void MKTStubSingletonWithLocation(id mockClass, SEL aSelector, id testCase, const char *fileName, int lineNumber)
+{
+    if (reportedInvalidClassMock(mockClass, testCase, fileName, lineNumber, @"stubSingleton()"))
+        return;
+    MKTClassObjectMock *theMock = (MKTClassObjectMock *)mockClass;
+    if (reportedInvalidClassMethod(theMock, aSelector, testCase, fileName, lineNumber, @"stubSingleton()"))
+        return;
+    [theMock swizzleSingletonAtSelector:aSelector];
+}
+
 id MKTVerifyWithLocation(id mock, id testCase, const char *fileName, int lineNumber)
 {
     if (reportedInvalidMock(mock, testCase, fileName, lineNumber, @"verify()"))
         return nil;
-
+    
     return MKTVerifyCountWithLocation(mock, MKTTimes(1), testCase, fileName, lineNumber);
 }
 
@@ -87,7 +109,7 @@ id MKTVerifyCountWithLocation(id mock, id mode, id testCase, const char *fileNam
 {
     if (reportedInvalidMock(mock, testCase, fileName, lineNumber, @"verifyCount()"))
         return nil;
-
+    
     return [[MKTMockitoCore sharedCore] verifyMock:mock
                                           withMode:mode
                                         atLocation:MKTTestLocationMake(testCase, fileName, lineNumber)];

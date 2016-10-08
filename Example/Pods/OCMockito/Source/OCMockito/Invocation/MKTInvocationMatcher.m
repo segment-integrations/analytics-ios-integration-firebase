@@ -4,6 +4,7 @@
 #import "MKTInvocationMatcher.h"
 
 #import "NSInvocation+OCMockito.h"
+#import <OCHamcrest/HCArgumentCaptor.h>
 #import <OCHamcrest/HCAssertThat.h>
 #import <OCHamcrest/HCIsNil.h>
 #import <OCHamcrest/HCWrapInMatcher.h>
@@ -113,6 +114,16 @@
             return NO;
     }
     return YES;
+}
+
+- (void)stopArgumentCapture
+{
+    for (id <HCMatcher> matcher in self.argumentMatchers)
+        if ([matcher isKindOfClass:[HCArgumentCaptor class]])
+        {
+            HCArgumentCaptor *captor = (HCArgumentCaptor *)matcher;
+            captor.captureEnabled = NO;
+        }
 }
 
 - (void)enumerateMismatchesOf:(NSInvocation *)actual
