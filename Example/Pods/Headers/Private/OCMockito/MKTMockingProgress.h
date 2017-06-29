@@ -1,1 +1,0 @@
-../../../OCMockito/Source/OCMockito/Core/MKTMockingProgress.h

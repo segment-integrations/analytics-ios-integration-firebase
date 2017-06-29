@@ -1,1 +1,0 @@
-../../../OCMockito/Source/OCMockito/Stubbing/MKTOngoingStubbing.h
