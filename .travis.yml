@@ -6,6 +6,6 @@ before_install:
  - gem install xcpretty
 
 script:
-- pod lib lint --use-libraries
+- pod lib lint --use-libraries --allow-warnings
 - make install
 - make test
