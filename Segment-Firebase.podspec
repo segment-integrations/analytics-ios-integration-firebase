@@ -33,9 +33,4 @@ Pod::Spec.new do |s|
     # This will bundle in Firebase Dynamic Link support
     dynamiclinks.dependency 'Firebase/DynamicLinks', '~> 4.0'
   end
-
-  s.subspec 'AppIndexing' do |appindexing|
-    # This will bundle in Firebase App Indexing support
-    appindexing.dependency 'Firebase/AppIndexing', '~> 4.0'
-  end
 end

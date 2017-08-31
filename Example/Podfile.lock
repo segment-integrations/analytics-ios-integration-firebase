@@ -55,9 +55,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OCHamcrest: 7c2229e7ea96eecd6e43dbef7c68e1dfbd6928b8
   OCMockito: 2598f5d43f6e74964d3ec3b9dea8b4fde3ea2c43
-  Segment-Firebase: e2ffdeed04126ca19000174fd2af3a428f09ebf0
+  Segment-Firebase: b3415b6693aafddc087c91c38d0f11d59284bbcf
   Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
 
-PODFILE CHECKSUM: 2024c8b9d7dac16ff8a5c105c2c8b845cf82d42f
+PODFILE CHECKSUM: 1c8bf179e541ce3ecce2debc2adb17511929041e
 
 COCOAPODS: 1.2.1
