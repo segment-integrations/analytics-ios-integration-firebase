@@ -1,4 +1,3 @@
-
 target 'Segment-Firebase_Example' do
   pod 'Segment-Firebase', :path => '../'
   
