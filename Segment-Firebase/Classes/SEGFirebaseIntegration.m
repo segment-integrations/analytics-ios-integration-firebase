@@ -10,8 +10,7 @@
 {
     NSMutableDictionary *mapped = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        id data = [mapped objectForKey:key];
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         if (![data isKindOfClass:[NSString class]]) {
             [mapped setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
         }
