@@ -8,15 +8,17 @@
 #pragma mark - Helper Functions
 + (NSDictionary *)mapToStrings:(NSDictionary *)dictionary
 {
-    NSMutableDictionary *mapped = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
-        if (![data isKindOfClass:[NSString class]]) {
-            [mapped setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
+        if ([data isKindOfClass:[NSString class]]) {
+            [output setObject:data forKey:key];
+        } else {
+            [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
         }
     }];
     
-    return [mapped copy];
+    return [output copy];
 }
 
 
