@@ -5,6 +5,23 @@
 
 @implementation SEGFirebaseIntegration
 
+#pragma mark - Helper Functions
++ (NSDictionary *)mapToStrings:(NSDictionary *)dictionary
+{
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+    
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
+        if ([data isKindOfClass:[NSString class]]) {
+            [output setObject:data forKey:key];
+        } else {
+            [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
+        }
+    }];
+    
+    return [output copy];
+}
+
+
 #pragma mark - Initialization
 
 - (id)initWithSettings:(NSDictionary *)settings
@@ -29,8 +46,9 @@
         [FIRAnalytics setUserID:payload.userId];
         SEGLog(@"[FIRAnalytics setUserId:%@]", payload.userId);
     }
-    
-    [payload.traits enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+    // Firebase requires user properties to be a NSString
+    NSDictionary *mappedTraits = [SEGFirebaseIntegration mapToStrings:payload.traits];
+    [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop){
         NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         NSString *value = [obj stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         [FIRAnalytics setUserPropertyString:value forName:trait];
