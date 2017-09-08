@@ -11,6 +11,7 @@
 {
     if (self = [super init]) {
         self.settings = settings;
+
         NSString *deepLinkURLScheme = [self.settings objectForKey:@"deepLinkURLScheme"];
         if (deepLinkURLScheme) {
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
@@ -133,7 +134,6 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         if ([data isKindOfClass:[NSString class]]) {
-            data = [SEGFirebaseIntegration checkForDate:data];
             data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
             [output setObject:data forKey:key];
         } else if ([data isKindOfClass:[NSNumber class]]){
@@ -155,7 +155,6 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         if ([data isKindOfClass:[NSString class]]) {
-            [SEGFirebaseIntegration checkForDate:data];
             [output setObject:data forKey:key];
         } else {
             [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
@@ -165,21 +164,5 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     return [output copy];
 }
 
-// Firebase requires dates to be formatted as YYYY-MM-DD
-+ (NSString *)checkForDate:(NSString *)input
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
-    NSDate *date = [dateFormatter dateFromString:input];
-    if (date == nil) {
-        return input;
-    } else {
-        NSDateFormatter *firebaseFormat = [[NSDateFormatter alloc] init];
-        [firebaseFormat setDateFormat:@"yyyy-MM-dd"];
-        NSString *output = [firebaseFormat stringFromDate:date];
-        return output;
-    }
- 
-}
 
 @end
