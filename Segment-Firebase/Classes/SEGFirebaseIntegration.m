@@ -174,7 +174,6 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
         NSDateFormatter *firebaseFormat = [[NSDateFormatter alloc] init];
         [firebaseFormat setDateFormat:@"yyyy-MM-dd"];
         NSString *output = [firebaseFormat stringFromDate:date];
-        SEGLog(@"output", output);
         return output;
     }
  
