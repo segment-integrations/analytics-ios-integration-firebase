@@ -96,18 +96,18 @@
 - (NSDictionary *)returnMappedFirebaseParameters:(NSDictionary *)properties
 {
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"category", kFIRParameterItemCategory,
-                        @"product_id", kFIRParameterItemID,
-                        @"name", kFIRParameterItemName,
-                        @"price", kFIRParameterPrice,
-                        @"quantity", kFIRParameterQuantity,
-                        @"query", kFIRParameterSearchTerm,
-                        @"shipping", kFIRParameterShipping,
-                        @"tax", kFIRParameterTax,
-                        @"total", kFIRParameterValue,
-                        @"revenue", kFIRParameterValue,
-                        @"order_id", kFIRParameterTransactionID,
-                        @"currency", kFIRParameterCurrency, nil];
+                        kFIRParameterItemCategory, @"category",
+                        kFIRParameterItemID, @"product_id",
+                        kFIRParameterItemName, @"name",
+                        kFIRParameterPrice, @"price",
+                        kFIRParameterQuantity, @"quantity",
+                        kFIRParameterSearchTerm, @"query",
+                        kFIRParameterShipping, @"shipping",
+                        kFIRParameterTax, @"tax",
+                        kFIRParameterValue, @"total",
+                        kFIRParameterValue, @"revenue",
+                        kFIRParameterTransactionID, @"order_id",
+                        kFIRParameterCurrency, @"currency", nil];
     
     
     return [SEGFirebaseIntegration mapToFirebaseParameters:properties withMap:map];
@@ -115,16 +115,16 @@
 
 + (NSDictionary *)mapToFirebaseParameters:(NSDictionary *)properties withMap:(NSDictionary *)mapper
 {
-    NSMutableDictionary *mappedParams = [NSMutableDictionary dictionaryWithCapacity:properties.count];
+    NSMutableDictionary *mappedParams = [NSMutableDictionary dictionaryWithDictionary:properties];
     [mapper enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
         id data = [properties objectForKey:original];
         if (properties[original] && data) {
+            [mappedParams removeObjectForKey:original];
             [mappedParams setObject:data forKey:new];
-        } else {
-            [mappedParams addEntriesFromDictionary:formatEventProperties(properties)];
         }
     }];
     
+    [mappedParams addEntriesFromDictionary:formatEventProperties(mappedParams)];
     return [mappedParams copy];
 }
 
@@ -135,6 +135,9 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
         if ([data isKindOfClass:[NSString class]]) {
             data = [SEGFirebaseIntegration checkForDate:data];
             data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            [output setObject:data forKey:key];
+        } else if ([data isKindOfClass:[NSNumber class]]){
+            data = [NSNumber numberWithDouble:[data doubleValue]];
             [output setObject:data forKey:key];
         } else {
             [output setObject:data forKey:key];
