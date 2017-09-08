@@ -5,23 +5,6 @@
 
 @implementation SEGFirebaseIntegration
 
-#pragma mark - Helper Functions
-+ (NSDictionary *)mapToStrings:(NSDictionary *)dictionary
-{
-    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
-    
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
-        if ([data isKindOfClass:[NSString class]]) {
-            [output setObject:data forKey:key];
-        } else {
-            [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
-        }
-    }];
-    
-    return [output copy];
-}
-
-
 #pragma mark - Initialization
 
 - (id)initWithSettings:(NSDictionary *)settings
@@ -46,7 +29,7 @@
         [FIRAnalytics setUserID:payload.userId];
         SEGLog(@"[FIRAnalytics setUserId:%@]", payload.userId);
     }
-    // Firebase requires user properties to be a NSString
+    // Firebase requires user properties to be an NSString
     NSDictionary *mappedTraits = [SEGFirebaseIntegration mapToStrings:payload.traits];
     [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop){
         NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
@@ -58,40 +41,43 @@
 
 - (void)track:(SEGTrackPayload *)payload
  {
-    
-     NSString *name = [self firebaseEventNames:payload.event];
-     NSDictionary *parameters = [self firebaseParameters:payload.properties];
+     NSString *name = [self formatFirebaseEventNames:payload.event];
+     NSDictionary *parameters = [self returnMappedFirebaseParameters:payload.properties];
 
      [FIRAnalytics logEventWithName:name parameters:parameters];
      SEGLog(@"[FIRAnalytics logEventWithName:%@ parameters:%@]", name, parameters);
+     
  }
 
 
 # pragma mark - Utilities
-//Event names can be up to 32 characters long, may only contain alphanumeric
+
+// Event names can be up to 32 characters long, may only contain alphanumeric
 // characters and underscores ("_"), and must start with an alphabetic character. The "firebase_"
 // prefix is reserved and should not be used.
 
-- (NSString *)firebaseEventNames:(NSString *)event
+// Maps Segment Spec to Firebase Constants
+// https://firebase.google.com/docs/reference/ios/firebaseanalytics/api/reference/Constants#/c:FIRParameterNames.h@kFIRParameterCampaign
+
+- (NSString *)formatFirebaseEventNames:(NSString *)event
 {
-    // Map the event names to special firebase events
     NSDictionary *mapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"add_payment_info", @"payment info entered",
-                            @"add_to_cart", @"product added",
-                            @"add_to_wishlist", @"product added to wishlist",
-                            @"app_open", @"application opened",
-                            @"begin_checkout", @"checkout started",
-                            @"present_offer", @"promotion viewed",
-                            @"search", @"products searched",
-                            @"select_content", @"product clicked",
-                            @"view_item", @"product viewed",
-                            @"view_item_list", @"product list viewed",
-                            @"share", @"product shared",
-                            @"ecommerce_purchase", @"order completed",
-                            @"purchase_refund", @"order refunded", nil
+                            kFIREventSelectContent, @"Product Clicked",
+                            kFIREventViewItem, @"Product Viewed",
+                            kFIREventAddToCart, @"Product Added",
+                            kFIREventRemoveFromCart, @"Product Removed",
+                            kFIREventBeginCheckout, @"Checkout Started",
+                            kFIREventAddPaymentInfo, @"Payment Info Entered",
+                            kFIREventEcommercePurchase, @"Order Completed",
+                            kFIREventPurchaseRefund, @"Order Refunded",
+                            kFIREventViewItemList, @"Product List Viewed",
+                            kFIREventAddToWishlist, @"Product Added to Wishlist",
+                            kFIREventShare, @"Product Shared",
+                            kFIREventShare, @"Cart Shared",
+                            kFIREventSearch, @"Products Searched", nil
                             ];
     
-    NSString *mappedEvent = [mapper objectForKey:[event lowercaseString]];
+    NSString *mappedEvent = [mapper objectForKey:event];
     
     if (mappedEvent) {
         return mappedEvent;
@@ -106,63 +92,92 @@
 /// Custom events. Param names can be up to 24 characters long, may only contain alphanumeric
 /// characters and underscores ("_"), and must start with an alphabetic character. Param values can
 /// be up to 36 characters long. The "firebase_" prefix is reserved and should not be used.
-- (NSDictionary *)firebaseParameters:(NSDictionary *)properties
+
+- (NSDictionary *)returnMappedFirebaseParameters:(NSDictionary *)properties
 {
-    // Map to special firebase properties.
-    NSDictionary *mapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                         @"content_type", @"category",
-                         // flatten location
-                         @"destination", @"location",
-                         @"start_date", @"checkin_date",
-                         @"end_date", @"checkout_date",
-                         @"item_category", @"category",
-                         @"item_id", @"product_id",
-                         @"item_name", @"name",
-                         @"number_of_nights", @"booking_window",
-                         @"number_of_rooms", @"quantity",
-                         @"origin", @"origin",
-                         @"price", @"price",
-                         @"quantity", @"quantity",
-                         @"search_term", @"query",
-                         @"shipping", @"shipping",
-                         @"tax", @"tax",
-                         @"travel_class", @"class",
-                         @"value", @"total",
-                         @"value", @"revenue",
-                         @"transaction_id", @"order_id", nil];
+    NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
+                        @"category", kFIRParameterItemCategory,
+                        @"product_id", kFIRParameterItemID,
+                        @"name", kFIRParameterItemName,
+                        @"price", kFIRParameterPrice,
+                        @"quantity", kFIRParameterQuantity,
+                        @"query", kFIRParameterSearchTerm,
+                        @"shipping", kFIRParameterShipping,
+                        @"tax", kFIRParameterTax,
+                        @"total", kFIRParameterValue,
+                        @"revenue", kFIRParameterValue,
+                        @"order_id", kFIRParameterTransactionID,
+                        @"currency", kFIRParameterCurrency, nil];
     
-    return [SEGFirebaseIntegration map:properties withMap:mapper];
+    
+    return [SEGFirebaseIntegration mapToFirebaseParameters:properties withMap:map];
 }
 
-+ (NSDictionary *)map:(NSDictionary *)dictionary withMap:(NSDictionary *)map
++ (NSDictionary *)mapToFirebaseParameters:(NSDictionary *)properties withMap:(NSDictionary *)mapper
 {
-    NSMutableDictionary *mapped = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-    
-    [map enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
-        id data = [mapped objectForKey:original];
-        if (data) {
-            // Check if the property could be a number, convert if so
-            if ([data isKindOfClass:[NSString class]]) {
-                NSNumber *number;
-                BOOL validNumber;
-                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                number = [formatter numberFromString:data];
-                validNumber = number != nil;
-                
-                if (validNumber) {
-                    data = number;
-                } else {
-                    data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-                }
-            }
-            
-            [mapped setObject:data forKey:new];
-            [mapped removeObjectForKey:original];
+    NSMutableDictionary *mappedParams = [NSMutableDictionary dictionaryWithCapacity:properties.count];
+    [mapper enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
+        id data = [properties objectForKey:original];
+        if (properties[original] && data) {
+            [mappedParams setObject:data forKey:new];
+        } else {
+            [mappedParams addEntriesFromDictionary:formatEventProperties(properties)];
         }
     }];
     
-    return [mapped copy];
+    return [mappedParams copy];
+}
+
+NSDictionary *formatEventProperties(NSDictionary *dictionary)
+{
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
+        if ([data isKindOfClass:[NSString class]]) {
+            data = [SEGFirebaseIntegration checkForDate:data];
+            data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            [output setObject:data forKey:key];
+        } else {
+            [output setObject:data forKey:key];
+        }
+    }];
+    
+    return [output copy];
+
+}
+
+// Firebase requires all User traits to be Strings
++ (NSDictionary *)mapToStrings:(NSDictionary *)dictionary
+{
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+    
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
+        if ([data isKindOfClass:[NSString class]]) {
+            [SEGFirebaseIntegration checkForDate:data];
+            [output setObject:data forKey:key];
+        } else {
+            [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
+        }
+    }];
+    
+    return [output copy];
+}
+
+// Firebase requires dates to be formatted as YYYY-MM-DD
++ (NSString *)checkForDate:(NSString *)input
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    NSDate *date = [dateFormatter dateFromString:input];
+    if (date == nil) {
+        return input;
+    } else {
+        NSDateFormatter *firebaseFormat = [[NSDateFormatter alloc] init];
+        [firebaseFormat setDateFormat:@"yyyy-MM-dd"];
+        NSString *output = [firebaseFormat stringFromDate:date];
+        SEGLog(@"output", output);
+        return output;
+    }
+ 
 }
 
 @end
