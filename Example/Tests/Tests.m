@@ -165,19 +165,19 @@ describe(@"Firebase Integration", ^{
         
         [integration track:payload];
         [verify(mockFirebase) logEventWithName:@"view_item" parameters:@{
-                                                                              @"item_id": @"507f1f77bcf86cd799439011",
-                                                                              @"sku":@"G-32",
-                                                                              @"item_category":@"Games",
-                                                                              @"item_name":@"Monopoly 3rd Edition",
-                                                                              @"brand":@"Hasbro",
-                                                                              @"variant":@"200 pieces",
-                                                                              @"price":@18.99,
-                                                                              @"quantity":@1,
-                                                                              @"coupon":@"MAYDEALS",
-                                                                              @"currency":@"usd",
-                                                                              @"position":@3,
-                                                                              @"url":@"https://www.company.com/product/path",
-                                                                              @"image_url":@"https://www.company.com/product/path.jpg"}];
+                                                                         @"item_id": @"507f1f77bcf86cd799439011",
+                                                                         @"sku":@"G-32",
+                                                                         @"item_category":@"Games",
+                                                                         @"item_name":@"Monopoly 3rd Edition",
+                                                                         @"brand":@"Hasbro",
+                                                                         @"variant":@"200 pieces",
+                                                                         @"price":@18.99,
+                                                                         @"quantity":@1,
+                                                                         @"coupon":@"MAYDEALS",
+                                                                         @"currency":@"usd",
+                                                                         @"position":@3,
+                                                                         @"url":@"https://www.company.com/product/path",
+                                                                         @"image_url":@"https://www.company.com/product/path.jpg"}];
     });
 
     it(@"track Product Added", ^{
@@ -258,23 +258,23 @@ describe(@"Firebase Integration", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Checkout Started"
                                                                properties:@{
                                                                             @"checkout_id":@"9bcf000000000000",
-                                    @"order_id":@"50314b8e",
-                                    @"affiliation":@"App Store",
-                                    @"total":@30.45,
-                                    @"shipping":@5.05,
-                                    @"tax":@1.20,
-                                    @"currency":@"USD",
-                                    @"category":@"Games",
-                                    @"revenue": @8,
-                                    @"products":@{
-                                                  @"product_id":@"2013294",
-                                                  @"category":@"Games",
-                                                  @"name":@"Monopoly: 3rd Edition",
-                                                  @"brand":@"Hasbros",
-                                                  @"price":@"21.99",
-                                                  @"quantity":@"1"
-                                                  }
-                                    }
+                                                                            @"order_id":@"50314b8e",
+                                                                            @"affiliation":@"App Store",
+                                                                            @"total":@30.45,
+                                                                            @"shipping":@5.05,
+                                                                            @"tax":@1.20,
+                                                                            @"currency":@"USD",
+                                                                            @"category":@"Games",
+                                                                            @"revenue": @8,
+                                                                            @"products":@{
+                                                                                    @"product_id":@"2013294",
+                                                                                    @"category":@"Games",
+                                                                                    @"name":@"Monopoly: 3rd Edition",
+                                                                                    @"brand":@"Hasbros",
+                                                                                    @"price":@"21.99",
+                                                                                    @"quantity":@"1"
+                                                                                    }
+                                                                            }
                                                                   context:@{}
                                                              integrations:@{}];
         
