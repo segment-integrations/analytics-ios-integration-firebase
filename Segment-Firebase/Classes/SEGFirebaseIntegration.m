@@ -2,7 +2,6 @@
 #import <Analytics/SEGAnalyticsUtils.h>
 #import <Firebase/Firebase.h>
 
-
 @implementation SEGFirebaseIntegration
 
 #pragma mark - Initialization
@@ -11,7 +10,7 @@
 {
     if (self = [super init]) {
         self.settings = settings;
-
+        self.firebaseClass = [FIRAnalytics class];
         NSString *deepLinkURLScheme = [self.settings objectForKey:@"deepLinkURLScheme"];
         if (deepLinkURLScheme) {
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
@@ -24,10 +23,19 @@
     return self;
 }
 
+- (id)initWithSettings:(NSDictionary *)settings andFirebase:(id)firebaseClass;
+{
+    if (self = [super init]) {
+        self.settings = settings;
+        self.firebaseClass = firebaseClass;
+    }
+    return self;
+}
+
 - (void)identify:(SEGIdentifyPayload *)payload
 {
     if (payload.userId) {
-        [FIRAnalytics setUserID:payload.userId];
+        [self.firebaseClass setUserID:payload.userId];
         SEGLog(@"[FIRAnalytics setUserId:%@]", payload.userId);
     }
     // Firebase requires user properties to be an NSString
@@ -35,7 +43,7 @@
     [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop){
         NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         NSString *value = [obj stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        [FIRAnalytics setUserPropertyString:value forName:trait];
+        [self.firebaseClass setUserPropertyString:value forName:trait];
         SEGLog(@"[FIRAnalytics setUserPropertyString:%@ forName:%@]", value, trait);
     }];
 }
@@ -45,7 +53,7 @@
      NSString *name = [self formatFirebaseEventNames:payload.event];
      NSDictionary *parameters = [self returnMappedFirebaseParameters:payload.properties];
 
-     [FIRAnalytics logEventWithName:name parameters:parameters];
+     [self.firebaseClass logEventWithName:name parameters:parameters];
      SEGLog(@"[FIRAnalytics logEventWithName:%@ parameters:%@]", name, parameters);
      
  }
@@ -119,24 +127,22 @@
     NSMutableDictionary *mappedParams = [NSMutableDictionary dictionaryWithDictionary:properties];
     [mapper enumerateKeysAndObjectsUsingBlock:^(NSString *original, NSString *new, BOOL *stop) {
         id data = [properties objectForKey:original];
-        if (properties[original] && data) {
+        if (data) {
             [mappedParams removeObjectForKey:original];
             [mappedParams setObject:data forKey:new];
         }
     }];
     
-    [mappedParams addEntriesFromDictionary:formatEventProperties(mappedParams)];
-    return [mappedParams copy];
+    return [formatEventProperties(mappedParams) copy];
 }
 
 NSDictionary *formatEventProperties(NSDictionary *dictionary)
 {
     NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
-        if ([data isKindOfClass:[NSString class]]) {
-            data = [data stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-            [output setObject:data forKey:key];
-        } else if ([data isKindOfClass:[NSNumber class]]){
+        [output removeObjectForKey:key];
+        key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        if ([data isKindOfClass:[NSNumber class]]){
             data = [NSNumber numberWithDouble:[data doubleValue]];
             [output setObject:data forKey:key];
         } else {
