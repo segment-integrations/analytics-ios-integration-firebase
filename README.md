@@ -13,7 +13,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-Segment-Firebase is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
+Segment-Firebase is currently only available through [CocoaPods](http://cocoapods.org).
 
 ### Cocoapods
 Simply add the following to your podfile.
