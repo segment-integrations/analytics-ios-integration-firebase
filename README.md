@@ -13,20 +13,29 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-Segment-Firebase is available through [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
+Segment-Firebase is currently only available through [CocoaPods](http://cocoapods.org).
 
-### Cocoapods
-Simply add the following to your podfile.
+Register your app in the [Firebase console](https://console.firebase.google.com/) and add the `GoogleService-Info.plist` to the root of your Xcode project.
 
-```ruby
-pod "Segment-Firebase"
+Add the following dependency to your Podfile:
+
+ ```
+ pod 'Segment-Firebase' 
+ ```
+
+After adding the dependency and running `pod install`, import the integration:
+
+```
+#import <Segment-Firebase/SEGFirebaseIntegrationFactory.h>
 ```
 
-### Carthage
+Finally, register the dependency with the Segment SDK:
 
 ```
-github "segment-integrations/analytics-ios-integration-firebase"
+[config use:[SEGFirebaseIntegrationFactory instance]];
 ```
+
+By default, Segment only bundles `Firebase/Core` which is [Firebase's Analytics offering](https://firebase.google.com/docs/analytics/). You can see the other available [Firebase pods and features here](https://firebase.google.com/docs/ios/setup).
 
 ## License
 
