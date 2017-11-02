@@ -25,11 +25,11 @@ PODS:
   - OCHamcrest (7.0.1)
   - OCMockito (5.0.0):
     - OCHamcrest (~> 7.0)
-  - Segment-Firebase (1.0.0):
+  - Segment-Firebase (2.0.0):
     - Analytics (~> 3.2)
     - Firebase/Core (~> 4.0)
-    - Segment-Firebase/Core (= 1.0.0)
-  - Segment-Firebase/Core (1.0.0):
+    - Segment-Firebase/Core (= 2.0.0)
+  - Segment-Firebase/Core (2.0.0):
     - Analytics (~> 3.2)
     - Firebase/Core (~> 4.0)
   - Specta (1.0.6)
@@ -42,7 +42,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Segment-Firebase:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   Analytics: 2c09a50e3478a3a7ced08a22d00c43ba6f7011e6
@@ -55,9 +55,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OCHamcrest: 7c2229e7ea96eecd6e43dbef7c68e1dfbd6928b8
   OCMockito: 2598f5d43f6e74964d3ec3b9dea8b4fde3ea2c43
-  Segment-Firebase: b3415b6693aafddc087c91c38d0f11d59284bbcf
+  Segment-Firebase: faaadea4a778f8df3d35a2e4027b213ddbd645d4
   Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
 
 PODFILE CHECKSUM: 1c8bf179e541ce3ecce2debc2adb17511929041e
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

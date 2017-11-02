@@ -8,7 +8,7 @@ install: Example/Podfile $(PROJECT).podspec
 	pod install --project-directory=Example
 
 lint:
-	pod lib lint
+	pod lib lint --use-libraries
 
 clean:
 	set -o pipefail && xcodebuild $(XC_ARGS) clean | xcpretty
