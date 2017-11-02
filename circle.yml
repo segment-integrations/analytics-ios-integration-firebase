@@ -1,0 +1,19 @@
+machine:
+  xcode:
+    version: "9.0"
+
+dependencies:
+  pre:
+    - gem install xcpretty
+    - gem install cocoapods -v 1.3.1
+  override:
+    - make install
+  cache_directories:
+    - Example/Pods
+    - ~/.cocoapods
+
+test:
+  override:
+    - make build
+    - make test
+    - make lint

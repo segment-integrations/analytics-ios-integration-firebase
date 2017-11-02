@@ -1,22 +1,22 @@
-XCPRETTY := xcpretty -c && exit ${PIPESTATUS[0]}
-
 SDK ?= "iphonesimulator"
 DESTINATION ?= "platform=iOS Simulator,name=iPhone 5"
 PROJECT := Segment-Firebase
 XC_ARGS := -scheme $(PROJECT)-Example -workspace Example/$(PROJECT).xcworkspace -sdk $(SDK) -destination $(DESTINATION) ONLY_ACTIVE_ARCH=NO
 
-install: Example/Podfile Segment-Firebase.podspec
+install: Example/Podfile $(PROJECT).podspec
 	pod repo update
 	pod install --project-directory=Example
 
+lint:
+	pod lib lint
+
 clean:
-	xcodebuild $(XC_ARGS) clean | $(XCPRETTY)
+	set -o pipefail && xcodebuild $(XC_ARGS) clean | xcpretty
 
 build:
-	xcodebuild $(XC_ARGS) | $(XCPRETTY)
+	set -o pipefail && xcodebuild $(XC_ARGS) | xcpretty
 
 test:
-	xcodebuild test $(XC_ARGS) | $(XCPRETTY)
+	set -o pipefail && xcodebuild test $(XC_ARGS) | xcpretty --report junit
 
-.PHONY: test build xctest xcbuild clean
-.SILENT:
+.PHONY: clean install build test
