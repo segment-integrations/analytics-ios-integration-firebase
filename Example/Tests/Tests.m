@@ -36,7 +36,7 @@ describe(@"Firebase Integration", ^{
                                                                                                                   } context:@{} integrations:@{}];
         [integration identify:payload];
         [verify(mockFirebase) setUserID:@"7891"];
-        [verify(mockFirebase) setUserPropertyString:@"Jerry_Seinfield" forName: @"name"];
+        [verify(mockFirebase) setUserPropertyString:@"Jerry Seinfield" forName: @"name"];
         [verify(mockFirebase) setUserPropertyString:@"male" forName: @"gender"];
         [verify(mockFirebase) setUserPropertyString:@"confused" forName: @"emotion"];
         [verify(mockFirebase) setUserPropertyString:@"47" forName: @"age"];
