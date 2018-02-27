@@ -42,7 +42,7 @@
     NSDictionary *mappedTraits = [SEGFirebaseIntegration mapToStrings:payload.traits];
     [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop){
         NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *value = [obj stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *value = [obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [self.firebaseClass setUserPropertyString:value forName:trait];
         SEGLog(@"[FIRAnalytics setUserPropertyString:%@ forName:%@]", value, trait);
     }];
