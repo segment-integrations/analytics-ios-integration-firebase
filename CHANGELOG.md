@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 2.1.0 *(27th February, 2018)*
+-------------------------------------------
+*(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
+
+ * [Fix](https://github.com/segment-integrations/analytics-ios-integration-firebase/pull/19): Bug was replacing spaces with underscores for each value. Firebase shows that trait/property names should have underscores, but not the values. This will break current users implementations if they are expecting the values to have underscores. 
+
 Version 2.0.0 *(11th September, 2017)*
 -------------------------------------------
 *(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
