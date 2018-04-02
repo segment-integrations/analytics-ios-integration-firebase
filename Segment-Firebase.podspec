@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
     # you can choose this subspec, but be sure to include the folling in your podfile
     # pod 'Firebase'
     # Please manually add the following file preserved by Cocoapods to your xcodeproj file
-    workaround.preserve_paths = 'Pod/Classes/**/*'
+    workaround.preserve_paths = 'Segment-Firebase/Classes/**/*'
   end
 
 end
