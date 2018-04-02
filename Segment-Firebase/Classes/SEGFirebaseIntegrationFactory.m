@@ -6,6 +6,7 @@
 #import "SEGFirebaseIntegrationFactory.h"
 #import "SEGFirebaseIntegration.h"
 
+
 @implementation SEGFirebaseIntegrationFactory
 
 + (instancetype)instance
