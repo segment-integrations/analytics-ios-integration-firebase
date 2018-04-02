@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 2.2.0 *(2nd April, 2018)*
+-------------------------------------------
+*(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
+
+ * [New](https://github.com/segment-integrations/analytics-ios-integration-firebase/pull/23): Adds Static Library Workaround subspec to assist with the [Cocoapods static library/framework issue](https://github.com/CocoaPods/CocoaPods/issues/2926). The limitation occurs when an application is built in Swift, you are including use_frameworks! in your podfile, and are using a transitive dependency that is provided as a static library or framework. More [here](https://segment.com/docs/sources/mobile/ios/#target-has-transitive-dependencies-that-include-static-binaries).
+
 Version 2.1.0 *(27th February, 2018)*
 -------------------------------------------
 *(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
