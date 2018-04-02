@@ -1,5 +1,5 @@
 SDK ?= "iphonesimulator"
-DESTINATION ?= "platform=iOS Simulator,name=iPhone 5"
+DESTINATION ?= "platform=iOS Simulator,name=iPhone 7"
 PROJECT := Segment-Firebase
 XC_ARGS := -scheme $(PROJECT)-Example -workspace Example/$(PROJECT).xcworkspace -sdk $(SDK) -destination $(DESTINATION) ONLY_ACTIVE_ARCH=NO
 
