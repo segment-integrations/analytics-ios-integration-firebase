@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 2.3.0 *(4th July, 2018)*
+-------------------------------------------
+*(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
+
+* [Enhancement](https://github.com/segment-integrations/analytics-ios-integration-firebase/commit/6766b87834c5b81401d966a36792d6f9488fca61): Fix issues related to `use_frameworks!` and transitive static libraries
+
+
 Version 2.2.0 *(2nd April, 2018)*
 -------------------------------------------
 *(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
