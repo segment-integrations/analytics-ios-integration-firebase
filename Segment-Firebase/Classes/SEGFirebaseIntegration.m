@@ -2,6 +2,7 @@
 #import <Analytics/SEGAnalyticsUtils.h>
 #import <Firebase/Firebase.h>
 
+
 @implementation SEGFirebaseIntegration
 
 #pragma mark - Initialization
@@ -16,14 +17,13 @@
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
             SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
         }
-        
-        @try {
+
+      @try {
+            SEGLog(@"[FIRApp Configure]");
             [FIRApp configure];
         } @catch ( NSException *e ) {
             SEGLog(@"Error during [FIRApp Configure]: %@", e.reason);
         }
-        
-        SEGLog(@"[FIRApp Configure]");
     }
     return self;
 }
@@ -45,7 +45,7 @@
     }
     // Firebase requires user properties to be an NSString
     NSDictionary *mappedTraits = [SEGFirebaseIntegration mapToStrings:payload.traits];
-    [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop){
+    [mappedTraits enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
         NSString *trait = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         NSString *value = [obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [self.firebaseClass setUserPropertyString:value forName:trait];
@@ -54,17 +54,16 @@
 }
 
 - (void)track:(SEGTrackPayload *)payload
- {
-     NSString *name = [self formatFirebaseEventNames:payload.event];
-     NSDictionary *parameters = [self returnMappedFirebaseParameters:payload.properties];
+{
+    NSString *name = [self formatFirebaseEventNames:payload.event];
+    NSDictionary *parameters = [self returnMappedFirebaseParameters:payload.properties];
 
-     [self.firebaseClass logEventWithName:name parameters:parameters];
-     SEGLog(@"[FIRAnalytics logEventWithName:%@ parameters:%@]", name, parameters);
-     
- }
+    [self.firebaseClass logEventWithName:name parameters:parameters];
+    SEGLog(@"[FIRAnalytics logEventWithName:%@ parameters:%@]", name, parameters);
+}
 
 
-# pragma mark - Utilities
+#pragma mark - Utilities
 
 // Event names can be up to 32 characters long, may only contain alphanumeric
 // characters and underscores ("_"), and must start with an alphabetic character. The "firebase_"
@@ -76,23 +75,22 @@
 - (NSString *)formatFirebaseEventNames:(NSString *)event
 {
     NSDictionary *mapper = [NSDictionary dictionaryWithObjectsAndKeys:
-                            kFIREventSelectContent, @"Product Clicked",
-                            kFIREventViewItem, @"Product Viewed",
-                            kFIREventAddToCart, @"Product Added",
-                            kFIREventRemoveFromCart, @"Product Removed",
-                            kFIREventBeginCheckout, @"Checkout Started",
-                            kFIREventAddPaymentInfo, @"Payment Info Entered",
-                            kFIREventEcommercePurchase, @"Order Completed",
-                            kFIREventPurchaseRefund, @"Order Refunded",
-                            kFIREventViewItemList, @"Product List Viewed",
-                            kFIREventAddToWishlist, @"Product Added to Wishlist",
-                            kFIREventShare, @"Product Shared",
-                            kFIREventShare, @"Cart Shared",
-                            kFIREventSearch, @"Products Searched", nil
-                            ];
-    
+                                             kFIREventSelectContent, @"Product Clicked",
+                                             kFIREventViewItem, @"Product Viewed",
+                                             kFIREventAddToCart, @"Product Added",
+                                             kFIREventRemoveFromCart, @"Product Removed",
+                                             kFIREventBeginCheckout, @"Checkout Started",
+                                             kFIREventAddPaymentInfo, @"Payment Info Entered",
+                                             kFIREventEcommercePurchase, @"Order Completed",
+                                             kFIREventPurchaseRefund, @"Order Refunded",
+                                             kFIREventViewItemList, @"Product List Viewed",
+                                             kFIREventAddToWishlist, @"Product Added to Wishlist",
+                                             kFIREventShare, @"Product Shared",
+                                             kFIREventShare, @"Cart Shared",
+                                             kFIREventSearch, @"Products Searched", nil];
+
     NSString *mappedEvent = [mapper objectForKey:event];
-    
+
     if (mappedEvent) {
         return mappedEvent;
     } else {
@@ -110,20 +108,20 @@
 - (NSDictionary *)returnMappedFirebaseParameters:(NSDictionary *)properties
 {
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
-                        kFIRParameterItemCategory, @"category",
-                        kFIRParameterItemID, @"product_id",
-                        kFIRParameterItemName, @"name",
-                        kFIRParameterPrice, @"price",
-                        kFIRParameterQuantity, @"quantity",
-                        kFIRParameterSearchTerm, @"query",
-                        kFIRParameterShipping, @"shipping",
-                        kFIRParameterTax, @"tax",
-                        kFIRParameterValue, @"total",
-                        kFIRParameterValue, @"revenue",
-                        kFIRParameterTransactionID, @"order_id",
-                        kFIRParameterCurrency, @"currency", nil];
-    
-    
+                                          kFIRParameterItemCategory, @"category",
+                                          kFIRParameterItemID, @"product_id",
+                                          kFIRParameterItemName, @"name",
+                                          kFIRParameterPrice, @"price",
+                                          kFIRParameterQuantity, @"quantity",
+                                          kFIRParameterSearchTerm, @"query",
+                                          kFIRParameterShipping, @"shipping",
+                                          kFIRParameterTax, @"tax",
+                                          kFIRParameterValue, @"total",
+                                          kFIRParameterValue, @"revenue",
+                                          kFIRParameterTransactionID, @"order_id",
+                                          kFIRParameterCurrency, @"currency", nil];
+
+
     return [SEGFirebaseIntegration mapToFirebaseParameters:properties withMap:map];
 }
 
@@ -137,7 +135,7 @@
             [mappedParams setObject:data forKey:new];
         }
     }];
-    
+
     return [formatEventProperties(mappedParams) copy];
 }
 
@@ -147,23 +145,22 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         [output removeObjectForKey:key];
         key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        if ([data isKindOfClass:[NSNumber class]]){
+        if ([data isKindOfClass:[NSNumber class]]) {
             data = [NSNumber numberWithDouble:[data doubleValue]];
             [output setObject:data forKey:key];
         } else {
             [output setObject:data forKey:key];
         }
     }];
-    
-    return [output copy];
 
+    return [output copy];
 }
 
 // Firebase requires all User traits to be Strings
 + (NSDictionary *)mapToStrings:(NSDictionary *)dictionary
 {
     NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
-    
+
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         if ([data isKindOfClass:[NSString class]]) {
             [output setObject:data forKey:key];
@@ -171,7 +168,7 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
             [output setObject:[NSString stringWithFormat:@"%@", data] forKey:key];
         }
     }];
-    
+
     return [output copy];
 }
 

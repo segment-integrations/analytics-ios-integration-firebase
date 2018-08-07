@@ -9,22 +9,27 @@
 #import "SEGViewController.h"
 #import <Analytics/SEGAnalytics.h>
 
+
 @interface SEGViewController ()
 
 @end
 
+
 @implementation SEGViewController
-- (IBAction)buttonTouch:(id)sender {
+- (IBAction)buttonTouch:(id)sender
+{
     [[SEGAnalytics sharedAnalytics] track:@"order Completed" properties:@{
-                                                                         @"currency": @"USD",
-                                                                         @"total": @"10.20"}];
+        @"currency" : @"USD",
+        @"total" : @"10.20"
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    	// Do any additional setup after loading the view, typically from a nib.
-    [[SEGAnalytics sharedAnalytics] identify:@"123abc" traits:@{@"name":@"fred", @"gender":@"male"}];
+    // Do any additional setup after loading the view, typically from a nib.
+    [[SEGAnalytics sharedAnalytics] identify:@"123abc" traits:@{ @"name" : @"fred",
+                                                                 @"gender" : @"male" }];
 }
 
 - (void)didReceiveMemoryWarning
