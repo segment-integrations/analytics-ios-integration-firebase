@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Segment-Firebase"
-  s.version          = "2.4.0-beta"
+  s.version          = "2.4.0"
   s.summary          = "Firebase Integration for Segment's analytics-ios library."
 
   s.description      = <<-DESC
