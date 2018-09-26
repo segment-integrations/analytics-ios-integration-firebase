@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'DynamicLinks' do |dynamiclinks|
     # This will bundle in Firebase Dynamic Link support
-    dynamiclinks.dependency 'Firebase/DynamicLinks', '~4.0'
+    dynamiclinks.dependency 'Firebase/DynamicLinks', '~>4.0'
   end
 end
