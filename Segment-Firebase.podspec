@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'Analytics', '~> 3.2'
-  s.dependency 'Firebase/Core', '~> 4.0'
+  s.dependency 'Firebase/Core', '~> 5.0'
 
   s.subspec 'Core' do |core|
     #For users who only want the core Firebase package
@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'DynamicLinks' do |dynamiclinks|
     # This will bundle in Firebase Dynamic Link support
-    dynamiclinks.dependency 'Firebase/DynamicLinks', '~> 4.0'
+    dynamiclinks.dependency 'Firebase/DynamicLinks'
   end
 end
