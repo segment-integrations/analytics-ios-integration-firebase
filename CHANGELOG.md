@@ -3,7 +3,7 @@ Change Log
 
 Version 2.4.0 *(26th September, 2018)*
 -------------------------------------------
-*(Supports analytics-ios 3.2.+ and Firebase 4.0+)*
+*(Supports analytics-ios 3.2.+ and Firebase 5.0+)*
 
 * [Enhancement](https://github.com/segment-integrations/analytics-ios-integration-firebase/pull/31/files): Upgrade from Firebase 4 to Firebase 5 to support Crashlytics.
 
