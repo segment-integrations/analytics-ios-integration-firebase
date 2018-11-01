@@ -1,6 +1,5 @@
 #import "SEGFirebaseIntegration.h"
 #import <Analytics/SEGAnalyticsUtils.h>
-#import <Firebase/Firebase.h>
 
 
 @implementation SEGFirebaseIntegration
@@ -8,6 +7,11 @@
 #pragma mark - Initialization
 
 - (id)initWithSettings:(NSDictionary *)settings
+{
+    return [self initWithSettings:settings andOptions:nil];
+}
+
+- (id)initWithSettings:(NSDictionary *)settings andOptions:(FIROptions*)options
 {
     if (self = [super init]) {
         self.settings = settings;
@@ -17,9 +21,13 @@
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
             SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
         }
-
-        [FIRApp configure];
-        SEGLog(@"[FIRApp Configure]");
+        if (options == nil) {
+            [FIRApp configure];
+            SEGLog(@"[FIRApp Configure]");
+        } else {
+            [FIRApp configureWithOptions:options];
+            SEGLog(@"[FIRApp ConfigureWithOptions]");
+        }
     }
     return self;
 }
