@@ -22,8 +22,10 @@
             SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
         }
         if (options == nil) {
-            [FIRApp configure];
-            SEGLog(@"[FIRApp Configure]");
+            if ([FIRApp defaultApp] == nil) {
+                [FIRApp configure];
+                SEGLog(@"[FIRApp Configure]");
+            }
         } else {
             [FIRApp configureWithOptions:options];
             SEGLog(@"[FIRApp ConfigureWithOptions]");
