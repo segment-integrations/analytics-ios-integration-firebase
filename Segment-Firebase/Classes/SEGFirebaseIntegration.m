@@ -9,7 +9,9 @@
 
 - (id)initWithSettings:(NSDictionary *)settings
 {
-    if (self = [super init]) {
+    if ([FIRApp defaultApp]) {
+        SEGLog(@"[FIRApp configure] already called, skipping.");
+    } else if (self = [super init]) {
         self.settings = settings;
         self.firebaseClass = [FIRAnalytics class];
         NSString *deepLinkURLScheme = [self.settings objectForKey:@"deepLinkURLScheme"];
