@@ -306,6 +306,30 @@ describe(@"Firebase Integration", ^{
         }];
     });
 
+    it(@"track Promotion Viewed", ^{
+        SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Promotion Viewed"
+            properties:@{
+                @"product_id" : @"507f1f77bcf86cd799439011",
+                @"category" : @"Games",
+                @"name" : @"Monopoly 3rd Edition",
+                @"price" : @18.99,
+                @"quantity" : @1,
+                @"currency" : @"usd",
+            }
+            context:@{}
+            integrations:@{}];
+
+        [integration track:payload];
+        [verify(mockFirebase) logEventWithName:@"present_offer" parameters:@{
+            @"item_id" : @"507f1f77bcf86cd799439011",
+            @"item_category" : @"Games",
+            @"item_name" : @"Monopoly 3rd Edition",
+            @"price" : @18.99,
+            @"quantity" : @1,
+            @"currency" : @"usd",
+        }];
+    });
+
     it(@"track Payment Info Entered", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Payment Info Entered"
             properties:@{
