@@ -76,6 +76,7 @@
                                              kFIREventAddToCart, @"Product Added",
                                              kFIREventRemoveFromCart, @"Product Removed",
                                              kFIREventBeginCheckout, @"Checkout Started",
+                                             kFIREventPresentOffer, @"Promotion Viewed",
                                              kFIREventAddPaymentInfo, @"Payment Info Entered",
                                              kFIREventEcommercePurchase, @"Order Completed",
                                              kFIREventPurchaseRefund, @"Order Refunded",
