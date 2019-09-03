@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.4.1 *(28th August, 2018)*
+Version 2.4.1 *(28th August, 2019)*
 -------------------------------------------
 
 * Add mapping of Segment `"Promotion Viewed"` event to Firebase `kFIREventPresentOffer` event. 
