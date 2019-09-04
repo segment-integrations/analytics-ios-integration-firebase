@@ -1,0 +1,33 @@
+version: 2
+
+jobs:
+  build_and_test:
+    macos:
+      xcode: "9.4.1"
+    steps:
+      - checkout
+      - run: xcrun simctl list
+      - run:
+          name: Install build dependencies
+          command: |
+            sudo gem install xcpretty
+            sudo gem install cocoapods -v 1.6.1
+      # - run:
+      #     name: Fetch Cocoapods specs
+      #     command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+
+      - run: make install
+      - run: make build
+      - run: make test
+      - run: make lint
+
+ # - store_test_results:
+ #          # relies on xcpretty --report junit
+ #          path: build/reports
+ #      - run: bash <(curl -s https://codecov.io/bash)
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_and_test
