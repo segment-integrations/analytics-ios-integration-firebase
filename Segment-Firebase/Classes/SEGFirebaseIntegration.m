@@ -17,7 +17,7 @@
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
             SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
         }
-        
+
         if ([FIRApp defaultApp]) {
             SEGLog(@"[FIRApp Configure] already called, skipping");
             return self;
@@ -105,10 +105,12 @@
     if (mappedEvent) {
         return mappedEvent;
     } else if (numberOfMatches == 0) {
+        NSString *trimmedEvent = [event stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if ([periodSeparatedEvent count] > 1) {
-            return [event stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+            return [trimmedEvent stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         } else {
-            return [event stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            return [trimmedEvent stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         }
     } else {
         return event;
@@ -162,10 +164,12 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         [output removeObjectForKey:key];
         NSArray *periodSeparatedKey = [key componentsSeparatedByString:@"."];
+        NSString *trimmedKey = [key stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if ([periodSeparatedKey count] > 1) {
-            key = [key stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+            key = [trimmedKey stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         } else {
-            key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            key = [trimmedKey stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         }
         if ([data isKindOfClass:[NSNumber class]]) {
             data = [NSNumber numberWithDouble:[data doubleValue]];
