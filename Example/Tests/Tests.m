@@ -65,6 +65,34 @@ describe(@"Firebase Integration", ^{
             @"Starship_Type" : @"Death Star"
         }];
     });
+    
+    it(@"track with event name and parmas separated by periods", ^{
+        SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Starship.Ordered"
+                                                               properties:@{
+                                                                            @"Starship.Type" : @"Death Star"
+                                                                            }
+                                                                  context:@{}
+                                                             integrations:@{}];
+        
+        [integration track:payload];
+        [verify(mockFirebase) logEventWithName:@"Starship_Ordered" parameters:@{
+                                                                                @"Starship_Type" : @"Death Star"
+                                                                                }];
+    });
+    
+    it(@"track with leading and trailing spacing for event name", ^{
+        SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"   Starship Ordered  "
+                                                               properties:@{
+                                                                            @"Starship.Type" : @"Death Star"
+                                                                            }
+                                                                  context:@{}
+                                                             integrations:@{}];
+        
+        [integration track:payload];
+        [verify(mockFirebase) logEventWithName:@"Starship_Ordered" parameters:@{
+                                                                                @"Starship_Type" : @"Death Star"
+                                                                                }];
+    });
 
     it(@"track Order Completed", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Order Completed" properties:@{
