@@ -1,10 +1,18 @@
 Change Log
 ==========
+Version 2.5.0 *(9th September, 2019)*
+-------------------------------------------
+
+* Updates to use the latest Firebase/Core SDK (6.2)
+* Adds FirebaseAnalytics (6.1) as dependency as Firebase is migrating away from FirebaseCore
+* Transforms event and property names to ^[a-zA-Z0-9_]+$
+* Fixes crash when Firebase SDK is instantiated multiple times by not configuring the FIRApp if already done
+* Adds CircleCI config
 
 Version 2.4.1 *(28th August, 2019)*
 -------------------------------------------
 
-* Add mapping of Segment `"Promotion Viewed"` event to Firebase `kFIREventPresentOffer` event. 
+* Add mapping of Segment `"Promotion Viewed"` event to Firebase `kFIREventPresentOffer` event.
 
 Version 2.4.0 *(26th September, 2018)*
 -------------------------------------------
