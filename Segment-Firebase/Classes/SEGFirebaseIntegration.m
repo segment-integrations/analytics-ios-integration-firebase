@@ -21,11 +21,13 @@
             [FIROptions defaultOptions].deepLinkURLScheme = deepLinkURLScheme;
             SEGLog(@"[FIROptions defaultOptions].deepLinkURLScheme = %@;", deepLinkURLScheme);
         }
+        if ([FIRApp defaultApp]) {
+            SEGLog(@"[FIRApp Configure] already called, skipping");
+            return self;
+        }
         if (options == nil) {
-            if ([FIRApp defaultApp] == nil) {
-                [FIRApp configure];
-                SEGLog(@"[FIRApp Configure]");
-            }
+            [FIRApp configure];
+            SEGLog(@"[FIRApp Configure]");
         } else {
             [FIRApp configureWithOptions:options];
             SEGLog(@"[FIRApp ConfigureWithOptions]");
@@ -86,6 +88,7 @@
                                              kFIREventAddToCart, @"Product Added",
                                              kFIREventRemoveFromCart, @"Product Removed",
                                              kFIREventBeginCheckout, @"Checkout Started",
+                                             kFIREventPresentOffer, @"Promotion Viewed",
                                              kFIREventAddPaymentInfo, @"Payment Info Entered",
                                              kFIREventEcommercePurchase, @"Order Completed",
                                              kFIREventPurchaseRefund, @"Order Refunded",
@@ -96,11 +99,28 @@
                                              kFIREventSearch, @"Products Searched", nil];
 
     NSString *mappedEvent = [mapper objectForKey:event];
-
+    NSArray *periodSeparatedEvent = [event componentsSeparatedByString:@"."];
+    NSString *regexString = @"^[a-zA-Z0-9_]+$";
+    NSError *error = NULL;
+    NSRegularExpression *regex =
+    [NSRegularExpression regularExpressionWithPattern:regexString
+                                              options:0
+                                                error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:event
+                                                        options:0
+                                                          range:NSMakeRange(0, [event length])];
     if (mappedEvent) {
         return mappedEvent;
+    } else if (numberOfMatches == 0) {
+        NSString *trimmedEvent = [event stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([periodSeparatedEvent count] > 1) {
+            return [trimmedEvent stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        } else {
+            return [trimmedEvent stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        }
     } else {
-        return [event stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        return event;
     }
 }
 
@@ -150,7 +170,14 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
     NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id data, BOOL *stop) {
         [output removeObjectForKey:key];
-        key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSArray *periodSeparatedKey = [key componentsSeparatedByString:@"."];
+        NSString *trimmedKey = [key stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([periodSeparatedKey count] > 1) {
+            key = [trimmedKey stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        } else {
+            key = [trimmedKey stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        }
         if ([data isKindOfClass:[NSNumber class]]) {
             data = [NSNumber numberWithDouble:[data doubleValue]];
             [output setObject:data forKey:key];
