@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 2.6.0 *(12th February, 2020)*
+-------------------------------------------
+* Adds support for calling `screen` calls explicitly. 
+
 Version 2.5.0 *(9th September, 2019)*
 -------------------------------------------
 
