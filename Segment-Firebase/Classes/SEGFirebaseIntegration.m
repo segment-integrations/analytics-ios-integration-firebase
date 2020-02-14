@@ -64,6 +64,13 @@
 }
 
 
+- (void)screen:(SEGScreenPayload *)payload
+{
+    [self.firebaseClass setScreenName:payload.name screenClass:nil];
+    SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
+}
+
+
 #pragma mark - Utilities
 
 // Event names can be up to 32 characters long, may only contain alphanumeric

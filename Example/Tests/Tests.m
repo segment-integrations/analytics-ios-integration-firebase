@@ -65,7 +65,7 @@ describe(@"Firebase Integration", ^{
             @"Starship_Type" : @"Death Star"
         }];
     });
-    
+
     it(@"track with event name and parmas separated by periods", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Starship.Ordered"
                                                                properties:@{
@@ -73,13 +73,13 @@ describe(@"Firebase Integration", ^{
                                                                             }
                                                                   context:@{}
                                                              integrations:@{}];
-        
+
         [integration track:payload];
         [verify(mockFirebase) logEventWithName:@"Starship_Ordered" parameters:@{
                                                                                 @"Starship_Type" : @"Death Star"
                                                                                 }];
     });
-    
+
     it(@"track with leading and trailing spacing for event name", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"   Starship Ordered  "
                                                                properties:@{
@@ -87,7 +87,7 @@ describe(@"Firebase Integration", ^{
                                                                             }
                                                                   context:@{}
                                                              integrations:@{}];
-        
+
         [integration track:payload];
         [verify(mockFirebase) logEventWithName:@"Starship_Ordered" parameters:@{
                                                                                 @"Starship_Type" : @"Death Star"
@@ -553,6 +553,15 @@ describe(@"Firebase Integration", ^{
         [verify(mockFirebase) logEventWithName:@"search" parameters:@{
             @"search_term" : @"blue hotpants"
         }];
+    });
+
+    it(@"track screen with name", ^{
+        SEGScreenPayload *payload = [[SEGScreenPayload alloc] initWithName:@"Home screen"
+                                                                properties:@{}
+                                                                   context:@{}
+                                                              integrations:@{}];
+        [integration screen:payload];
+        [verify(mockFirebase) setScreenName:@"Home screen" screenClass:nil];
     });
 
 });
