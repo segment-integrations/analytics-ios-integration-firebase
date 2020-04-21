@@ -176,7 +176,7 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
         if ([periodSeparatedKey count] > 1) {
             key = [trimmedKey stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         } else {
-            key = [trimmedKey stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            key = [[trimmedKey stringByReplacingOccurrencesOfString:@" " withString:@"_"] stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
         }
         if ([data isKindOfClass:[NSNumber class]]) {
             data = [NSNumber numberWithDouble:[data doubleValue]];
