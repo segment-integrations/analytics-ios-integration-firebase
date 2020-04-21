@@ -117,7 +117,7 @@
         if ([periodSeparatedEvent count] > 1) {
             return [trimmedEvent stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         } else {
-            return [trimmedEvent stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            return [[trimmedEvent stringByReplacingOccurrencesOfString:@" " withString:@"_"] stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
         }
     } else {
         return event;
