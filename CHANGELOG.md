@@ -1,8 +1,12 @@
 Change Log
 ==========
+Version 2.6.1 *(21st April, 2020)*
+-------------------------------------------
+* Adds support for  mapping `-`  to `_` in props and event names.  
+
 Version 2.6.0 *(12th February, 2020)*
 -------------------------------------------
-* Adds support for calling `screen` calls explicitly. 
+* Adds support for calling `screen` calls explicitly.
 
 Version 2.5.0 *(9th September, 2019)*
 -------------------------------------------
