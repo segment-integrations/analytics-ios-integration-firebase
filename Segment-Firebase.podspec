@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Segment-Firebase"
-  s.version          = "2.6.1"
+  s.version          = "2.6.2"
   s.summary          = "Firebase Integration for Segment's analytics-ios library."
 
   s.description      = <<-DESC
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
   s.static_framework = true
 
-  s.dependency 'Analytics', '~> 3.2'
+  s.dependency 'Analytics'
   s.dependency 'Firebase/Core', '~> 6.2'
   s.dependency 'FirebaseAnalytics','~> 6.1'
 
