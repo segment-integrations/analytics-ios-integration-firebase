@@ -142,7 +142,7 @@ describe(@"Firebase Integration", ^{
             @"tax" : @1.20,
             @"currency" : @"USD",
             @"item_category" : @"Games",
-            @"products" : @{
+            @"items" : @{
                 @"product_id" : @"2013294",
                 @"category" : @"Games",
                 @"name" : @"Monopoly: 3rd Edition",
@@ -337,7 +337,7 @@ describe(@"Firebase Integration", ^{
             @"tax" : @1.20,
             @"currency" : @"USD",
             @"item_category" : @"Games",
-            @"products" : @{
+            @"items" : @{
                 @"product_id" : @"2013294",
                 @"category" : @"Games",
                 @"name" : @"Monopoly: 3rd Edition",
@@ -430,7 +430,7 @@ describe(@"Firebase Integration", ^{
         [verify(mockFirebase) logEventWithName:@"view_item_list" parameters:@{
             @"list_id" : @"hot_deals_1",
             @"item_category" : @"Deals",
-            @"products" : @{
+            @"items" : @{
                 @"product_id" : @"2013294",
                 @"category" : @"Games",
                 @"name" : @"Monopoly: 3rd Edition",

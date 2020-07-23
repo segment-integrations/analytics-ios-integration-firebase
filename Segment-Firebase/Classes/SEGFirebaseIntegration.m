@@ -136,6 +136,7 @@
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
                                           kFIRParameterItemCategory, @"category",
                                           kFIRParameterItemID, @"product_id",
+                                          kFIRParameterItems, @"products",
                                           kFIRParameterItemName, @"name",
                                           kFIRParameterPrice, @"price",
                                           kFIRParameterQuantity, @"quantity",
