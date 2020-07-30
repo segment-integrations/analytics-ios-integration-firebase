@@ -6,6 +6,7 @@ XC_ARGS := -scheme $(PROJECT)-Example -workspace Example/$(PROJECT).xcworkspace 
 install: Example/Podfile $(PROJECT).podspec
 	pod repo update
 	pod install --project-directory=Example
+	carthage bootstrap --platform ios --use-ssh
 
 lint:
 	pod lib lint --use-libraries --allow-warnings
