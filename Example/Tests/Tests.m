@@ -66,6 +66,20 @@ describe(@"Firebase Integration", ^{
         }];
     });
 
+    it(@"track with event name and prop name > 40 chars", ^{
+        SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"ufddxsblvtujywadkmohvddqnpbginxozqjffhjyy"
+            properties:@{
+                @"ufddxsblvtujywadkmohvddqnpbginxozqjffhjyy" : @"Death Star"
+            }
+            context:@{}
+            integrations:@{}];
+
+        [integration track:payload];
+        [verify(mockFirebase) logEventWithName:@"ufddxsblvtujywadkmohvddqnpbginxozqjffhjy" parameters:@{
+            @"ufddxsblvtujywadkmohvddqnpbginxozqjffhjy" : @"Death Star"
+        }];
+    });
+
     it(@"track with event name and parmas separated by periods", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Starship.Ordered"
                                                                properties:@{
@@ -575,7 +589,7 @@ describe(@"Firebase Integration", ^{
                                                                    context:@{}
                                                               integrations:@{}];
         [integration screen:payload];
-        [verify(mockFirebase) setScreenName:@"Home screen" screenClass:nil];
+        [verify(mockFirebase) setScreenName:@"Home_screen" screenClass:nil];
     });
 
 });
