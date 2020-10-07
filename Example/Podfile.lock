@@ -66,13 +66,13 @@ PODS:
   - OCHamcrest (7.0.1)
   - OCMockito (5.0.0):
     - OCHamcrest (~> 7.0)
-  - Segment-Firebase (2.6.0):
-    - Analytics (~> 3.2)
+  - Segment-Firebase (2.6.2):
+    - Analytics
     - Firebase/Core (~> 6.2)
     - FirebaseAnalytics (~> 6.1)
-    - Segment-Firebase/Core (= 2.6.0)
-  - Segment-Firebase/Core (2.6.0):
-    - Analytics (~> 3.2)
+    - Segment-Firebase/Core (= 2.6.2)
+  - Segment-Firebase/Core (2.6.2):
+    - Analytics
     - Firebase/Core (~> 6.2)
     - FirebaseAnalytics (~> 6.1)
   - Specta (1.0.7)
@@ -122,7 +122,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   OCHamcrest: 7c2229e7ea96eecd6e43dbef7c68e1dfbd6928b8
   OCMockito: 2598f5d43f6e74964d3ec3b9dea8b4fde3ea2c43
-  Segment-Firebase: 0eed2062280020a418957d991c8c12588fea5c14
+  Segment-Firebase: a01dc8e10ffa3585035b302fa74fb348c5e54c0e
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: 256b940a1c5273be6ea8930b511feb0a3fb065f8
