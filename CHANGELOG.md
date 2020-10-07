@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 2.7.0 *(7th October, 2020)*
+-------------------------------------------
+* Updates import headers for iOS 14 support.
+
 Version 2.6.1 *(21st April, 2020)*
 -------------------------------------------
 * Adds support for  mapping `-`  to `_` in props and event names.  
