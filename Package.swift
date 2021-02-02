@@ -17,7 +17,7 @@ let package = Package(
               .product(name: "FirebaseAnalytics", package: "Firebase"),
             ],
             path: "Segment-Firebase/Classes",
-            publicHeadersPath: "include"
+            publicHeadersPath: ""
         )
     ]
 )
