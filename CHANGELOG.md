@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.7.1 *(5th March, 2020)*
+Version 2.7.1 *(5th March, 2021)*
 -------------------------------------------
 * Updated Firebase SDK to the latest (7.7.x).
 * Fixed issue w/ screen names not being captured.
