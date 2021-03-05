@@ -71,8 +71,12 @@
 
 - (void)screen:(SEGScreenPayload *)payload
 {
-    [self.firebaseClass setScreenName:payload.name screenClass:nil];
-    SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.firebaseClass logEventWithName:kFIREventScreenView parameters:@{
+            kFIRParameterScreenName: payload.name
+        }];
+        SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
+    });
 }
 
 
@@ -139,6 +143,7 @@
 - (NSDictionary *)returnMappedFirebaseParameters:(NSDictionary *)properties
 {
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          kFIRParameterItems, @"products",
                                           kFIRParameterItemCategory, @"category",
                                           kFIRParameterItemID, @"product_id",
                                           kFIRParameterItemName, @"name",
