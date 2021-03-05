@@ -142,7 +142,7 @@ describe(@"Firebase Integration", ^{
             @"tax" : @1.20,
             @"currency" : @"USD",
             @"item_category" : @"Games",
-            @"products" : @{
+            @"items" : @{
                 @"product_id" : @"2013294",
                 @"category" : @"Games",
                 @"name" : @"Monopoly: 3rd Edition",
@@ -571,6 +571,7 @@ describe(@"Firebase Integration", ^{
 
     it(@"track screen with name", ^{
         SEGScreenPayload *payload = [[SEGScreenPayload alloc] initWithName:@"Home screen"
+                                                                  category:@""
                                                                 properties:@{}
                                                                    context:@{}
                                                               integrations:@{}];
