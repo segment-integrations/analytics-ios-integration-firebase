@@ -99,7 +99,7 @@
                                              kFIREventBeginCheckout, @"Checkout Started",
                                              kFIREventPresentOffer, @"Promotion Viewed",
                                              kFIREventAddPaymentInfo, @"Payment Info Entered",
-                                             kFIREventEcommercePurchase, @"Order Completed",
+                                             kFIREventPurchase, @"Order Completed",
                                              kFIREventPurchaseRefund, @"Order Refunded",
                                              kFIREventViewItemList, @"Product List Viewed",
                                              kFIREventAddToWishlist, @"Product Added to Wishlist",

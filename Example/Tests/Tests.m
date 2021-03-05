@@ -133,7 +133,7 @@ describe(@"Firebase Integration", ^{
 
         [integration track:payload];
         // TODO: look into how to handle mapping Firebase reserved params to each products
-        [verify(mockFirebase) logEventWithName:@"ecommerce_purchase" parameters:@{
+        [verify(mockFirebase) logEventWithName:@"purchase" parameters:@{
             @"checkout_id" : @"9bcf000000000000",
             @"transaction_id" : @"50314b8e",
             @"affiliation" : @"App Store",
