@@ -1,5 +1,12 @@
 Change Log
 ==========
+
+Version 2.7.1 *(5th March, 2020)*
+-------------------------------------------
+* Updated Firebase SDK to the latest (7.7.x).
+* Fixed issue w/ screen names not being captured.
+* Added mapping for "products"->"items".
+
 Version 2.7.0 *(7th October, 2020)*
 -------------------------------------------
 * Updates import headers for iOS 14 support.
