@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.2 *(5th March, 2021)*
+-------------------------------------------
+* Map "order completed" to purchase instead of deprecated ecommerce_purchase.
+
 Version 2.7.1 *(5th March, 2021)*
 -------------------------------------------
 * Updated Firebase SDK to the latest (7.7.x).
