@@ -72,7 +72,9 @@
 - (void)screen:(SEGScreenPayload *)payload
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.firebaseClass setScreenName:payload.name screenClass:nil];
+        [self.firebaseClass logEventWithName:kFIREventScreenView parameters:@{
+            kFIRParameterScreenName: payload.name
+        }];
         SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
     });
 }
