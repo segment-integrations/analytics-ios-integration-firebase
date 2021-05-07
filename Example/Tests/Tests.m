@@ -143,10 +143,10 @@ describe(@"Firebase Integration", ^{
             @"currency" : @"USD",
             @"item_category" : @"Games",
             @"items" : @{
-                @"product_id" : @"2013294",
-                @"category" : @"Games",
-                @"name" : @"Monopoly: 3rd Edition",
-                @"brand" : @"Hasbros",
+                @"item_id" : @"2013294",
+                @"item_category" : @"Games",
+                @"item_name" : @"Monopoly: 3rd Edition",
+                @"item_brand" : @"Hasbros",
                 @"price" : @"21.99",
                 @"quantity" : @"1"
             }
@@ -178,7 +178,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"quantity" : @1,
@@ -215,7 +215,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"quantity" : @1,
@@ -254,7 +254,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"quantity" : @1,
@@ -292,7 +292,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"quantity" : @1,
@@ -338,10 +338,10 @@ describe(@"Firebase Integration", ^{
             @"currency" : @"USD",
             @"item_category" : @"Games",
             @"items" : @{
-                @"product_id" : @"2013294",
-                @"category" : @"Games",
-                @"name" : @"Monopoly: 3rd Edition",
-                @"brand" : @"Hasbros",
+                @"item_id" : @"2013294",
+                @"item_category" : @"Games",
+                @"item_name" : @"Monopoly: 3rd Edition",
+                @"item_brand" : @"Hasbros",
                 @"price" : @"21.99",
                 @"quantity" : @"1"
             }
@@ -431,10 +431,10 @@ describe(@"Firebase Integration", ^{
             @"list_id" : @"hot_deals_1",
             @"item_category" : @"Deals",
             @"items" : @{
-                @"product_id" : @"2013294",
-                @"category" : @"Games",
-                @"name" : @"Monopoly: 3rd Edition",
-                @"brand" : @"Hasbros",
+                @"item_id" : @"2013294",
+                @"item_category" : @"Games",
+                @"item_name" : @"Monopoly: 3rd Edition",
+                @"item_brand" : @"Hasbros",
                 @"price" : @"21.99",
                 @"quantity" : @"1"
             }
@@ -471,7 +471,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"quantity" : @1,
@@ -511,7 +511,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"url" : @"https://www.company.com/product/path",
@@ -547,7 +547,7 @@ describe(@"Firebase Integration", ^{
             @"sku" : @"G-32",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly: 3rd Edition",
-            @"brand" : @"Hasbro",
+            @"item_brand" : @"Hasbro",
             @"variant" : @"200 pieces",
             @"price" : @18.99,
             @"url" : @"https://www.company.com/product/path",
@@ -577,7 +577,7 @@ describe(@"Firebase Integration", ^{
                                                               integrations:@{}];
         [integration screen:payload];
         // screen is set async, so need to pump the runloop.
-        [NSRunLoop.mainRunLoop runUntilDate:[NSDate distantPast]];
+        [NSRunLoop.mainRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
         [verify(mockFirebase) logEventWithName:@"screen_view" parameters:@{
             kFIRParameterScreenName : @"Home screen"
         }];

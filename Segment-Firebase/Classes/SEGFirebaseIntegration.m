@@ -147,6 +147,7 @@
                                           kFIRParameterItemCategory, @"category",
                                           kFIRParameterItemID, @"product_id",
                                           kFIRParameterItemName, @"name",
+                                          kFIRParameterItemBrand, @"brand",
                                           kFIRParameterPrice, @"price",
                                           kFIRParameterQuantity, @"quantity",
                                           kFIRParameterSearchTerm, @"query",
@@ -168,6 +169,20 @@
         id data = [properties objectForKey:original];
         if (data) {
             [mappedParams removeObjectForKey:original];
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                data = [self mapToFirebaseParameters:data withMap:mapper];
+            } else if ([data isKindOfClass: [NSArray class]]) {
+                NSMutableArray *newArray = [NSMutableArray array];
+                for (id entry in newArray) {
+                    if ([entry isKindOfClass:[NSDictionary class]]) {
+                        id newEntry = [self mapToFirebaseParameters:entry withMap:mapper];
+                        [newArray addObject:newEntry];
+                    } else {
+                        [newArray addObject:entry];
+                    }
+                }
+                data = newArray;
+            }
             [mappedParams setObject:data forKey:new];
         }
     }];
