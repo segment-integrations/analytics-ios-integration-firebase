@@ -1,6 +1,11 @@
 #import "SEGFirebaseIntegration.h"
+@import Firebase;
+
+#if defined(__has_include) && __has_include(<Analytics/SEGAnalytics.h>)
 #import <Analytics/SEGAnalyticsUtils.h>
-#import <Firebase/Firebase.h>
+#else
+@import Segment;
+#endif
 
 
 @implementation SEGFirebaseIntegration
@@ -66,10 +71,12 @@
 
 - (void)screen:(SEGScreenPayload *)payload
 {
-    NSString *name = [SEGFirebaseIntegration formatFirebaseNameString:payload.name];
-
-    [self.firebaseClass setScreenName:name screenClass:nil];
-    SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.firebaseClass logEventWithName:kFIREventScreenView parameters:@{
+            kFIRParameterScreenName: payload.name
+        }];
+        SEGLog(@"[FIRAnalytics setScreenName:%@]", payload.name);
+    });
 }
 
 
@@ -112,7 +119,7 @@
                                              kFIREventBeginCheckout, @"Checkout Started",
                                              kFIREventPresentOffer, @"Promotion Viewed",
                                              kFIREventAddPaymentInfo, @"Payment Info Entered",
-                                             kFIREventEcommercePurchase, @"Order Completed",
+                                             kFIREventPurchase, @"Order Completed",
                                              kFIREventPurchaseRefund, @"Order Refunded",
                                              kFIREventViewItemList, @"Product List Viewed",
                                              kFIREventAddToWishlist, @"Product Added to Wishlist",
@@ -138,9 +145,11 @@
 - (NSDictionary *)returnMappedFirebaseParameters:(NSDictionary *)properties
 {
     NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          kFIRParameterItems, @"products",
                                           kFIRParameterItemCategory, @"category",
                                           kFIRParameterItemID, @"product_id",
                                           kFIRParameterItemName, @"name",
+                                          kFIRParameterItemBrand, @"brand",
                                           kFIRParameterPrice, @"price",
                                           kFIRParameterQuantity, @"quantity",
                                           kFIRParameterSearchTerm, @"query",
@@ -162,6 +171,20 @@
         id data = [properties objectForKey:original];
         if (data) {
             [mappedParams removeObjectForKey:original];
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                data = [self mapToFirebaseParameters:data withMap:mapper];
+            } else if ([data isKindOfClass: [NSArray class]]) {
+                NSMutableArray *newArray = [NSMutableArray array];
+                for (id entry in newArray) {
+                    if ([entry isKindOfClass:[NSDictionary class]]) {
+                        id newEntry = [self mapToFirebaseParameters:entry withMap:mapper];
+                        [newArray addObject:newEntry];
+                    } else {
+                        [newArray addObject:entry];
+                    }
+                }
+                data = newArray;
+            }
             [mappedParams setObject:data forKey:new];
         }
     }];

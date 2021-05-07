@@ -1,5 +1,20 @@
 Change Log
 ==========
+
+Version 2.7.2 *(5th March, 2021)*
+-------------------------------------------
+* Map "order completed" to purchase instead of deprecated ecommerce_purchase.
+
+Version 2.7.1 *(5th March, 2021)*
+-------------------------------------------
+* Updated Firebase SDK to the latest (7.7.x).
+* Fixed issue w/ screen names not being captured.
+* Added mapping for "products"->"items".
+
+Version 2.7.0 *(7th October, 2020)*
+-------------------------------------------
+* Updates import headers for iOS 14 support.
+
 Version 2.6.1 *(21st April, 2020)*
 -------------------------------------------
 * Adds support for  mapping `-`  to `_` in props and event names.  
