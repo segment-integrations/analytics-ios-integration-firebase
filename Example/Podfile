@@ -1,5 +1,7 @@
 platform :ios, '10.0'
 
+use_frameworks!
+
 ## Without use_frameworks!
 target 'Segment-Firebase_Example' do
   # Use default subspec

@@ -7,7 +7,8 @@
 //
 
 #import "SEGViewController.h"
-#import <Analytics/SEGAnalytics.h>
+
+@import Segment;
 
 
 @interface SEGViewController ()

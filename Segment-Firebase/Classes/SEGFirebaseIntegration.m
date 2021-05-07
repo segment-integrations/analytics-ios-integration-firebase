@@ -1,10 +1,12 @@
 #import "SEGFirebaseIntegration.h"
-#include <Firebase/Firebase.h>
+
+@import FirebaseCore;
+@import FirebaseAnalytics;
 
 #if defined(__has_include) && __has_include(<Analytics/SEGAnalytics.h>)
 #import <Analytics/SEGAnalyticsUtils.h>
 #else
-@impo rt Segment;
+@import Segment;
 #endif
 
 
