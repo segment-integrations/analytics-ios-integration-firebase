@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 2.7.4 *(17th May, 2021)*
+-------------------------------------------
+* Temporary fix for React Native issue.
+
+Version 2.7.3 *(7th May, 2021)*
+-------------------------------------------
+* Make Firebase key mapping recursive.
+* Added Swift Package Manager support.
+
 Version 2.7.2 *(5th March, 2021)*
 -------------------------------------------
 * Map "order completed" to purchase instead of deprecated ecommerce_purchase.
