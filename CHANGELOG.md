@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 2.7.5 *(18th May, 2021)*
+-------------------------------------------
+* Revert temporary fix for React Native issue.
+
+Version 2.7.4 *(17th May, 2021)*
+-------------------------------------------
+* Temporary fix for React Native issue.
+
 Version 2.7.3 *(7th May, 2021)*
 -------------------------------------------
 * Make Firebase key mapping recursive.
