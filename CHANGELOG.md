@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.6 *(18th May, 2021)*
+-------------------------------------------
+* Use headers instead of module names to address react-native issue.
+
 Version 2.7.5 *(18th May, 2021)*
 -------------------------------------------
 * Revert temporary fix for React Native issue.
