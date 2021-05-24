@@ -133,14 +133,16 @@ describe(@"Firebase Integration", ^{
             @"currency" : @"USD",
             @"category" : @"Games",
             @"revenue" : @8,
-            @"products" : @{
-                @"product_id" : @"2013294",
-                @"category" : @"Games",
-                @"name" : @"Monopoly: 3rd Edition",
-                @"brand" : @"Hasbros",
-                @"price" : @"21.99",
-                @"quantity" : @"1"
-            }
+            @"products" : @[
+                @{
+                    @"product_id" : @"2013294",
+                    @"category" : @"Games",
+                    @"name" : @"Monopoly: 3rd Edition",
+                    @"brand" : @"Hasbros",
+                    @"price" : @"21.99",
+                    @"quantity" : @"1"
+                }
+            ]
         }
             context:@{}
             integrations:@{}];
@@ -156,14 +158,16 @@ describe(@"Firebase Integration", ^{
             @"tax" : @1.20,
             @"currency" : @"USD",
             @"item_category" : @"Games",
-            @"items" : @{
-                @"item_id" : @"2013294",
-                @"item_category" : @"Games",
-                @"item_name" : @"Monopoly: 3rd Edition",
-                @"item_brand" : @"Hasbros",
-                @"price" : @"21.99",
-                @"quantity" : @"1"
-            }
+            @"items" : @[
+                @{
+                    @"item_id" : @"2013294",
+                    @"item_category" : @"Games",
+                    @"item_name" : @"Monopoly: 3rd Edition",
+                    @"item_brand" : @"Hasbros",
+                    @"price" : @"21.99",
+                    @"quantity" : @"1"
+                }
+            ]
         }];
     });
 
@@ -329,14 +333,16 @@ describe(@"Firebase Integration", ^{
                 @"currency" : @"USD",
                 @"category" : @"Games",
                 @"revenue" : @8,
-                @"products" : @{
-                    @"product_id" : @"2013294",
-                    @"category" : @"Games",
-                    @"name" : @"Monopoly: 3rd Edition",
-                    @"brand" : @"Hasbros",
-                    @"price" : @"21.99",
-                    @"quantity" : @"1"
-                }
+                @"products" : @[
+                    @{
+                        @"product_id" : @"2013294",
+                        @"category" : @"Games",
+                        @"name" : @"Monopoly: 3rd Edition",
+                        @"brand" : @"Hasbros",
+                        @"price" : @"21.99",
+                        @"quantity" : @"1"
+                    }
+                ]
             }
             context:@{}
             integrations:@{}];
@@ -351,14 +357,16 @@ describe(@"Firebase Integration", ^{
             @"tax" : @1.20,
             @"currency" : @"USD",
             @"item_category" : @"Games",
-            @"items" : @{
-                @"item_id" : @"2013294",
-                @"item_category" : @"Games",
-                @"item_name" : @"Monopoly: 3rd Edition",
-                @"item_brand" : @"Hasbros",
-                @"price" : @"21.99",
-                @"quantity" : @"1"
-            }
+            @"items" : @[
+                @{
+                    @"item_id" : @"2013294",
+                    @"item_category" : @"Games",
+                    @"item_name" : @"Monopoly: 3rd Edition",
+                    @"item_brand" : @"Hasbros",
+                    @"price" : @"21.99",
+                    @"quantity" : @"1"
+                }
+            ]
         }];
     });
 
@@ -428,14 +436,16 @@ describe(@"Firebase Integration", ^{
             properties:@{
                 @"list_id" : @"hot_deals_1",
                 @"category" : @"Deals",
-                @"products" : @{
-                    @"product_id" : @"2013294",
-                    @"category" : @"Games",
-                    @"name" : @"Monopoly: 3rd Edition",
-                    @"brand" : @"Hasbros",
-                    @"price" : @"21.99",
-                    @"quantity" : @"1"
-                }
+                @"products" : @[
+                    @{
+                        @"product_id" : @"2013294",
+                        @"category" : @"Games",
+                        @"name" : @"Monopoly: 3rd Edition",
+                        @"brand" : @"Hasbros",
+                        @"price" : @"21.99",
+                        @"quantity" : @"1"
+                    }
+                ]
             }
             context:@{}
             integrations:@{}];
@@ -444,14 +454,16 @@ describe(@"Firebase Integration", ^{
         [verify(mockFirebase) logEventWithName:@"view_item_list" parameters:@{
             @"list_id" : @"hot_deals_1",
             @"item_category" : @"Deals",
-            @"items" : @{
-                @"item_id" : @"2013294",
-                @"item_category" : @"Games",
-                @"item_name" : @"Monopoly: 3rd Edition",
-                @"item_brand" : @"Hasbros",
-                @"price" : @"21.99",
-                @"quantity" : @"1"
-            }
+            @"items" : @[
+                @{
+                    @"item_id" : @"2013294",
+                    @"item_category" : @"Games",
+                    @"item_name" : @"Monopoly: 3rd Edition",
+                    @"item_brand" : @"Hasbros",
+                    @"price" : @"21.99",
+                    @"quantity" : @"1"
+                }
+            ]
         }];
     });
 

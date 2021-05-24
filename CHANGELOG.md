@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.7 *(24th May, 2021)*
+-------------------------------------------
+* Fix incorrect array being used for recursive mapping.
+
 Version 2.7.6 *(18th May, 2021)*
 -------------------------------------------
 * Use headers instead of module names to address react-native issue.
