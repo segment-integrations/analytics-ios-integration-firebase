@@ -103,7 +103,6 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([^a-zA-Z0-9_])" options:0 error:&error];
     NSString *formatted = [regex stringByReplacingMatchesInString:trimmed options:0 range:NSMakeRange(0, [trimmed length]) withTemplate:@"_"];
 
-    NSLog(@"Output: %@", formatted); 
     return [formatted substringToIndex:MIN(40, [formatted length])];
 }
 
