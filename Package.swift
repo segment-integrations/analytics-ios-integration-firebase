@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "SegmentFirebase",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v10)],
     products: [.library(name: "SegmentFirebase", targets: ["SegmentFirebase"])],
     dependencies: [
       .package(name: "Segment", url: "https://github.com/segmentio/analytics-ios.git", from: "4.1.3"),
@@ -18,10 +18,7 @@ let package = Package(
               .product(name: "FirebaseCrashlytics", package: "Firebase")
             ],
             path: "Segment-Firebase/Classes",
-            publicHeadersPath: ".",
-            cSettings: [
-                .headerSearchPath(".")
-            ]
+            publicHeadersPath: ""
         )
     ]
 )
