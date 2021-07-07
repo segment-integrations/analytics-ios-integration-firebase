@@ -15,6 +15,7 @@ let package = Package(
             dependencies: [
               "Segment",
               .product(name: "FirebaseAnalytics", package: "Firebase"),
+              .product(name: "FirebaseCrashlytics", package: "Firebase")
             ],
             path: "Segment-Firebase/Classes",
             publicHeadersPath: ".",
