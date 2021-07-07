@@ -32,7 +32,7 @@
 
 - (NSString *)key
 {
-    return @"Google Analytics";
+    return @"Firebase";
 }
 
 @end
