@@ -1,5 +1,49 @@
 Change Log
 ==========
+
+Version 2.7.7 *(24th May, 2021)*
+-------------------------------------------
+* Fix incorrect array being used for recursive mapping.
+
+Version 2.7.6 *(18th May, 2021)*
+-------------------------------------------
+* Use headers instead of module names to address react-native issue.
+
+Version 2.7.5 *(18th May, 2021)*
+-------------------------------------------
+* Revert temporary fix for React Native issue.
+
+Version 2.7.4 *(17th May, 2021)*
+-------------------------------------------
+* Temporary fix for React Native issue.
+
+Version 2.7.3 *(7th May, 2021)*
+-------------------------------------------
+* Make Firebase key mapping recursive.
+* Added Swift Package Manager support.
+
+Version 2.7.2 *(5th March, 2021)*
+-------------------------------------------
+* Map "order completed" to purchase instead of deprecated ecommerce_purchase.
+
+Version 2.7.1 *(5th March, 2021)*
+-------------------------------------------
+* Updated Firebase SDK to the latest (7.7.x).
+* Fixed issue w/ screen names not being captured.
+* Added mapping for "products"->"items".
+
+Version 2.7.0 *(7th October, 2020)*
+-------------------------------------------
+* Updates import headers for iOS 14 support.
+
+Version 2.6.1 *(21st April, 2020)*
+-------------------------------------------
+* Adds support for  mapping `-`  to `_` in props and event names.  
+
+Version 2.6.0 *(12th February, 2020)*
+-------------------------------------------
+* Adds support for calling `screen` calls explicitly.
+
 Version 2.5.0 *(9th September, 2019)*
 -------------------------------------------
 
