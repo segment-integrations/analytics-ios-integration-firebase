@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.8 *(14th October, 2021)*
+-------------------------------------------
+* Bumped Firebase to version 8.7+
+
 Version 2.7.7 *(24th May, 2021)*
 -------------------------------------------
 * Fix incorrect array being used for recursive mapping.
