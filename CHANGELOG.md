@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 2.7.9 *(21st January, 2022)*
+-------------------------------------------
+* Fix compilation issue w/ SPM.
+* Updated releasing.md to include steps for posting SPM releases.
+
 Version 2.7.8 *(14th October, 2021)*
 -------------------------------------------
 * Bumped Firebase to version 8.7+
