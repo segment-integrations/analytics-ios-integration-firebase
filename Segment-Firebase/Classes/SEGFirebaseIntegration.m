@@ -201,12 +201,13 @@ NSDictionary *formatEventProperties(NSDictionary *dictionary)
         [output removeObjectForKey:key];
         key = [SEGFirebaseIntegration formatFirebaseNameString:key];
 
-        if ([data isKindOfClass:[NSNumber class]]) {
+        if ([key isEqualToString:kFIRParameterQuantity]) {
+            data = @([data integerValue]);
+        } else if ([data isKindOfClass:[NSNumber class]]) {
             data = [NSNumber numberWithDouble:[data doubleValue]];
-            [output setObject:data forKey:key];
-        } else {
-            [output setObject:data forKey:key];
         }
+
+        [output setObject:data forKey:key];
     }];
 
     return [output copy];
