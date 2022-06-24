@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.10 *(24th June, 2022)*
+-------------------------------------------
+* Bumped Firebase to version 9.2+
+
 Version 2.7.9 *(21st January, 2022)*
 -------------------------------------------
 * Fix compilation issue w/ SPM.
