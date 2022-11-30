@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.12 *(30th November, 2022)*
+-------------------------------------------
+* Bumped Firebase to version 10.2.0
+
 Version 2.7.11 *(24th June, 2022)*
 -------------------------------------------
 * Bumped Firebase to version 9.6.0
