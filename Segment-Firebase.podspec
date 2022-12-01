@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/segment-integrations/analytics-ios-integration-firebase.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/segment'
 
+  s.swift_version = '4.0'
   s.platform     = :ios, '11.0'
   s.requires_arc = true
 
