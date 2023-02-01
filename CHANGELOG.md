@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 2.7.13 *(1st February, 2023)*
+-------------------------------------------
+* Bumped Firebase to version 10.4 with optimistic operator applied for minor version instead of patch
+
 Version 2.7.12 *(30th November, 2022)*
 -------------------------------------------
 * Bumped Firebase to version 10.2.0
