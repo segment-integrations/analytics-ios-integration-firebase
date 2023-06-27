@@ -9,6 +9,17 @@
 @import Segment;
 #endif
 
+BOOL segFirebase_isUnitTesting()
+{
+    static dispatch_once_t pred = 0;
+    static BOOL _isUnitTesting = NO;
+    dispatch_once(&pred, ^{
+        NSDictionary *env = [NSProcessInfo processInfo].environment;
+        _isUnitTesting = (env[@"XCTestConfigurationFilePath"] != nil);
+    });
+    return _isUnitTesting;
+}
+
 
 @implementation SEGFirebaseIntegration
 
@@ -27,6 +38,11 @@
 
         if ([FIRApp defaultApp]) {
             SEGLog(@"[FIRApp Configure] already called, skipping");
+            return self;
+        }
+        
+        if(segFirebase_isUnitTesting()) {
+            SEGLog(@"[FIRApp Configure] unit testing, skipping");
             return self;
         }
 
