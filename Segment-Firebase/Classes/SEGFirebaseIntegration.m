@@ -81,6 +81,11 @@
     });
 }
 
+- (void)initializeOnDeviceMeasurement:(SEGIdentifyPayload *)payload
+{
+    [self.firebaseClass initiateOnDeviceConversionMeasurementWithEmailAddress:payload.traits.email];
+    SEGLog(@"[FIRAnalytics initiateOnDeviceConversionMeasurementWithEmailAddress:%@]", payload.traits.email);
+}
 
 #pragma mark - Utilities
 

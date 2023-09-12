@@ -44,6 +44,17 @@ describe(@"Firebase Integration", ^{
 
 
     });
+    
+    it(@"initialize On Device Measurement", ^{
+        SEGIdentifyPayload *payload = [[SEGIdentifyPayload alloc] initWithUserId:@"1111" anonymousId:nil traits:@{
+            @"email" : @"JerrySeinfield@gmail.com",
+        } context:@{}
+            integrations:@{}];
+
+        [integration initializeOnDeviceMeasurement:payload];
+        [verify(mockFirebase) setUserID:@"1111"];
+        [verify(mockFirebase) setUserPropertyString:@"JerrySeinfield@gmail.com" forName:@"email"];
+    });
 
     it(@"track with no props", ^{
         SEGTrackPayload *payload = [[SEGTrackPayload alloc] initWithEvent:@"Email Sent" properties:@{} context:@{} integrations:@{}];
