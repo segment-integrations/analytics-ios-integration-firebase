@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://segment.com/"
   s.license          =  { :type => 'MIT' }
   s.author           = { "Segment" => "friends@segment.com" }
-  s.source           = { :git => "https://github.com/segment-integrations/analytics-ios-integration-firebase.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/ekranac/analytics-ios-integration-firebase", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/segment'
 
   s.swift_version = '4.0'
