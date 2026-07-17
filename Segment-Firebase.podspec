@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Segment-Firebase"
-  s.version          = "2.7.13"
+  s.version          = "2.7.14"
   s.summary          = "Firebase Integration for Segment's analytics-ios library."
 
   s.description      = <<-DESC
@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/segment-integrations/analytics-ios-integration-firebase.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/segment'
 
-  s.swift_version = '4.0'
-  s.platform     = :ios, '11.0'
+  s.swift_version = '5.0'
+  s.platform     = :ios, '13.0'
   s.requires_arc = true
 
   s.source_files = 'Segment-Firebase/Classes/**/*'
@@ -25,9 +25,9 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'Analytics'
-  s.dependency 'Firebase', '~> 10.6.0'
-  s.dependency 'Firebase/Core', '~> 10.6.0'
-  s.dependency 'FirebaseAnalytics','~> 10.6.0'
+  s.dependency 'Firebase', '~> 11.1.0'
+  s.dependency 'Firebase/Core', '~> 11.1.0'
+  s.dependency 'FirebaseAnalytics','~> 11.1.0'
 
   s.subspec 'Core' do |core|
     #For users who only want the core Firebase package

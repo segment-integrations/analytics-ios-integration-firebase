@@ -384,7 +384,7 @@ describe(@"Firebase Integration", ^{
             integrations:@{}];
 
         [integration track:payload];
-        [verify(mockFirebase) logEventWithName:@"present_offer" parameters:@{
+        [verify(mockFirebase) logEventWithName:@"view_promotion" parameters:@{
             @"item_id" : @"507f1f77bcf86cd799439011",
             @"item_category" : @"Games",
             @"item_name" : @"Monopoly 3rd Edition",
@@ -425,7 +425,7 @@ describe(@"Firebase Integration", ^{
             integrations:@{}];
 
         [integration track:payload];
-        [verify(mockFirebase) logEventWithName:@"purchase_refund" parameters:@{
+        [verify(mockFirebase) logEventWithName:@"refund" parameters:@{
             @"transaction_id" : @"50314b8e9bcf000000000000"
         }];
     });

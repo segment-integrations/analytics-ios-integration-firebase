@@ -32,3 +32,5 @@ Carthage
 #
 Pods/
 .clang-format
+
+.build/

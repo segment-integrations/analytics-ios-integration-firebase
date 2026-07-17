@@ -3,7 +3,7 @@ version: 2
 jobs:
   build_and_test:
     macos:
-      xcode: "12.0"
+      xcode: "15.4"
     steps:
       - checkout
       - run: xcrun simctl list
@@ -11,7 +11,7 @@ jobs:
           name: Install build dependencies
           command: |
             sudo gem install xcpretty
-            sudo gem install cocoapods -v 1.10.0
+            sudo gem install cocoapods -v 1.15.2
       - run:
           name: Fetch Cocoapods specs
           command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
